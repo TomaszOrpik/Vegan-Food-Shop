@@ -1,0 +1,11 @@
+
+.btn {
+    background-color: white !important;
+    color: black !important;
+    border-color: green !important;
+    border-radius: 15px;
+}
+.btn:hover, .btn:active {
+    background-color: green !important;
+    color: white !important;
+}

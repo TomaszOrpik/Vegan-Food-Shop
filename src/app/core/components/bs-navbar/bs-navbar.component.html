@@ -1,0 +1,49 @@
+<nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/">
+      <img src="https://firebasestorage.googleapis.com/v0/b/vegeshop-714fb.appspot.com/o/logoTransparent.png?alt=media&token=d6ae9d3c-c3b4-45ef-ad32-3b7299d9a5ed">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+      <ul class="nav navbar-nav navbar-right">
+        <ng-template #anonymousUser>
+          <li class="nav-item">
+            <app-login></app-login>
+          </li>
+        </ng-template>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/products">
+            <span><b>SKLEP</b></span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/contact">
+            <span><b>KONTAKT</b></span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/shopping-cart">
+            <span><b>KOSZYK</b></span>
+            <span class="badge badge-warning badge-pill" *ngIf="cart$ | async as cart">
+              ({{ cart.totalItemsCount }})
+            </span>
+          </a>
+        </li>
+        <li ngbDropdown *ngIf="appUser; else anonymousUser" class="nav-item dropdown">
+          <a ngbDropdownToggle class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{ appUser.name }}
+          </a>
+          <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
+            <a class="dropdown-item" routerLink="/my/orders">My Orders</a>
+            <ng-container *ngIf="appUser.isAdmin">
+              <a class="dropdown-item" routerLink="/admin/orders">Manage Orders</a>
+              <a class="dropdown-item" routerLink="/admin/products">Manage Products</a>
+            </ng-container>
+            <a class="dropdown-item" (click)="logout()">Log Out</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
