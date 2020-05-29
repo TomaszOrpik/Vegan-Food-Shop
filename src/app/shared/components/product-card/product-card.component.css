@@ -16,3 +16,8 @@
   cursor: pointer;
   text-transform: uppercase;
 }
+
+.clickable:hover>img {
+  opacity: 0.5;
+  cursor: pointer;
+}

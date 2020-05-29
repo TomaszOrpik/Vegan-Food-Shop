@@ -1,0 +1,19 @@
+#item-display {
+    max-width: 500px;
+}
+
+.product-title, .product-price, .product-stock, .btn-group {
+    margin-top: 50px;
+}
+
+.product-price {
+    border-bottom: 1px solid lightgray;
+}
+
+.text-green {
+    color: green;
+}
+
+.btn.margin-left {
+    margin-left: 20px !important;
+}

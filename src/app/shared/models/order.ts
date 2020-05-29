@@ -16,7 +16,7 @@ export class Order {
         },
         quantity: i.quantity,
         totalPrice: i.totalPrice
-      }
-    })    
+      };
+    });
   }
 }

@@ -1,9 +1,9 @@
 <div *ngIf="product.title" class="card">
-    <img *ngIf="product.imageUrl" class="card-img-top" [src]="product.imageUrl" alt="{{ product.title }}">
+  <a class="clickable" (click)="redirect()">
+  <img *ngIf="product.imageUrl" class="card-img-top" [src]="product.imageUrl" alt="{{ product.title }}">
+</a>
   <div class="card-body">
-    <a class="clickable" (click)="redirect()">
     <h4 class="card-title">{{ product.title }}</h4>
-    </a>
     <p class="card-text">{{ product.price | currency:'PLN':true }}</p>
   </div>
   <div *ngIf="showActions && shoppingCart" class="card-footer">

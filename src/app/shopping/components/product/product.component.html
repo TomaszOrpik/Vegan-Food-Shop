@@ -1,3 +1,43 @@
-<p>
-  product works!
-</p>
+<div class="container-fluid">
+  <div class="content-wrapper">	
+    <div class="item-container">	
+      <div class="container">
+        <div class="row">
+        <div class="col-md-6">
+          <div>
+            <img *ngIf="product.imageUrl" id="item-display" [src]="product.imageUrl" alt="{{ product.title }}"/>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="product-title">Nazwa: {{ product.title }}</div>
+        <hr>
+        <div class="product-price">Cena: {{product.price | currency:'PLN':true }}</div>
+        <div class="product-stock">Stan: <span class="text-green">W Magazynie</span></div>
+        <hr>
+        <div class="btn-group cart">
+          <button type="button" (click)="addToCart()" class="btn btn-success">
+            Dodaj do koszyka
+          </button>
+          <button type="button" (click)="removeFromCart()" class="btn btn-danger margin-left">
+            Usuń z koszyka
+          </button>
+        </div>
+    </div>
+  </div>
+  <div class="row">
+    <ul id="myTab" class="nav nav-tabs nav_tabs">
+          
+      <li class="active"><div data-toggle="tab">OPIS</div></li>
+      
+    </ul>
+  <div id="myTabContent" class="tab-content">
+      <div class="tab-pane fade in active" id="service-one">
+       
+        <section class="container product-info">
+         {{ product.description }}
+        </section>
+                
+      </div>
+  </div>
+  </div>	
+</div>

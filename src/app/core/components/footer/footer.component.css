@@ -1,5 +1,6 @@
 .bg-color {
     position: relative;
+    bottom: 0;
     width: 100vw;
     background-color: lightgray !important;
     height: 50px;

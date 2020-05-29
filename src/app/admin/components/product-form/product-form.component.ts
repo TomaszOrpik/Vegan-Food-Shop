@@ -33,7 +33,7 @@ export class ProductFormComponent implements OnInit {
     // tslint:disable-next-line: curly
     else this.productService.create(product);
 
-    this.router.navigate(['/admin/products']);
+    this.router.navigate(['/admin/sklep']);
   }
 
   delete() {
@@ -41,7 +41,7 @@ export class ProductFormComponent implements OnInit {
     if (!confirm('Are you sure you want to delete this product?')) return;
 
     this.productService.delete(this.id);
-    this.router.navigate(['/admin/products']);
+    this.router.navigate(['/admin/sklep']);
   }
 
   ngOnInit() {
