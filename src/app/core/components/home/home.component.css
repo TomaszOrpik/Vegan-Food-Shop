@@ -81,6 +81,29 @@ img.bg {
     background-size: cover;
 }
 
+/* home bottom part */
+
+.bottomShop {
+  width: 100vw;
+  height: 35vh;
+}
+
+.customBottom {
+  position: relative;
+}
+
+.bottomBtn {
+  position: relative;
+  bottom: 150px;
+  right: 10vw;
+}
+.bottomHeader {
+  position: relative;
+  bottom: -100px;
+  left: 1vw;
+  color: darkgreen;
+}
+
 /* home button */
 
 .customButton {
