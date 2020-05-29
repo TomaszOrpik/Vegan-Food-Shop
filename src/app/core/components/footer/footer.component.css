@@ -1,5 +1,6 @@
 .bg-color {
     position: relative;
+    width: 100vw;
     background-color: lightgray !important;
     height: 50px;
     line-height: 1cm;

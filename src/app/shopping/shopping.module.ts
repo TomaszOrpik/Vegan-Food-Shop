@@ -13,17 +13,19 @@ import { ProductsComponent } from './components/products/products.component';
 import { ShippingFormComponent } from './components/shipping-form/shipping-form.component';
 import { ShoppingCartSummaryComponent } from './components/shopping-cart-summary/shopping-cart-summary.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
+import { ProductComponent } from './components/product/product.component';
 
 @NgModule({
   imports: [
-    SharedModule,
     RouterModule.forChild([
       { path: 'sklep', component: ProductsComponent },
       { path: 'koszyk', component: ShoppingCartComponent },
       { path: 'kasa', component: CheckOutComponent },
       { path: 'podsumowanie/:id', component: OrderSuccessComponent },
-      { path: 'moje/zamowienia', component: MyOrdersComponent, canActivate: [AuthGuard] },
-    ])
+      { path: 'produkt/:id', component: ProductComponent },
+      { path: 'moje/zamowienia', component: MyOrdersComponent }
+    ]),
+    SharedModule
   ],
   declarations: [
     ProductsComponent,
@@ -33,7 +35,8 @@ import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.
     MyOrdersComponent,
     ProductFilterComponent,
     ShoppingCartSummaryComponent,
-    ShippingFormComponent
+    ShippingFormComponent,
+    ProductComponent
   ]
 })
 export class ShoppingModule { }

@@ -30,7 +30,7 @@ export class ProductsComponent implements OnInit  {
     this.populateProducts();
   }
 
-  private populateProducts() { 
+  private populateProducts() {
     this.productService
       .getAll()
       .switchMap(products => {
@@ -39,14 +39,14 @@ export class ProductsComponent implements OnInit  {
       })
       .subscribe(params => {
         this.category = params.get('category');
-        this.applyFilter();      
+        this.applyFilter();
       });
   }
 
 
-  private applyFilter() { 
-    this.filteredProducts = (this.category) ? 
-    this.products.filter(p => p.category === this.category) : 
+  private applyFilter() {
+    this.filteredProducts = (this.category) ?
+    this.products.filter(p => p.category === this.category) :
     this.products;
   }
 }

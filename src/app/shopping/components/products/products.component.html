@@ -1,6 +1,6 @@
-
+<div class="container shop-position">
   <div class="row">
-    <div class="col-9 float-left shop-position">
+    <div class="col-9">
       <div class="row" *ngIf="cart$ | async as cart">
           <ng-container *ngFor="let p of filteredProducts; let i = index">
             <div class="col">
@@ -17,5 +17,5 @@
           <product-filter [category]="category"></product-filter>
         </div>
   </div>
-
+</div>
 

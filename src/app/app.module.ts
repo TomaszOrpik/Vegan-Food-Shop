@@ -10,14 +10,13 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './core/components/login/login.component';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
-import { ProductsComponent } from './shopping/components/products/products.component';
 import { ShoppingModule } from './shopping/shopping.module';
 import { HomeComponent } from './core/components/home/home.component';
 import { ContactComponent } from './core/components/contact/contact.component';
 
 @NgModule({
   declarations: [
-    AppComponent   
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +29,7 @@ import { ContactComponent } from './core/components/contact/contact.component';
       { path: '', component: HomeComponent },
       { path: 'login', component: LoginComponent },
       { path: 'kontakt', component: ContactComponent },
-    ])    
+    ])
   ],
   providers: [
     AdminAuthGuard,
