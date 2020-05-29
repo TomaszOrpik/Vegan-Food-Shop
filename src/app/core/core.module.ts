@@ -6,6 +6,7 @@ import { BsNavbarComponent } from './components/bs-navbar/bs-navbar.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ContactComponent } from './components/contact/contact.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   imports: [
@@ -17,9 +18,11 @@ import { ContactComponent } from './components/contact/contact.component';
     HomeComponent,
     LoginComponent,
     ContactComponent,
+    FooterComponent,
   ],
   exports: [
-    BsNavbarComponent
+    BsNavbarComponent,
+    FooterComponent
   ]
 })
 export class CoreModule { }

@@ -18,11 +18,11 @@ import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.
   imports: [
     SharedModule,
     RouterModule.forChild([
-      { path: 'products', component: ProductsComponent },
-      { path: 'shopping-cart', component: ShoppingCartComponent },
-      { path: 'check-out', component: CheckOutComponent, canActivate: [AuthGuard] },
-      { path: 'order-success/:id', component: OrderSuccessComponent, canActivate: [AuthGuard] },
-      { path: 'my/orders', component: MyOrdersComponent, canActivate: [AuthGuard] },
+      { path: 'sklep', component: ProductsComponent },
+      { path: 'koszyk', component: ShoppingCartComponent },
+      { path: 'kasa', component: CheckOutComponent },
+      { path: 'podsumowanie/:id', component: OrderSuccessComponent },
+      { path: 'moje/zamowienia', component: MyOrdersComponent, canActivate: [AuthGuard] },
     ])
   ],
   declarations: [

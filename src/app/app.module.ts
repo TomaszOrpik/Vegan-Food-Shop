@@ -29,7 +29,7 @@ import { ContactComponent } from './core/components/contact/contact.component';
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
       { path: 'login', component: LoginComponent },
-      { path: 'contact', component: ContactComponent },
+      { path: 'kontakt', component: ContactComponent },
     ])    
   ],
   providers: [

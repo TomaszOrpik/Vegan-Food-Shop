@@ -14,9 +14,9 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   tableResource: DataTableResource<Product>;
   items: Product[] = [];
-  itemCount: number; 
+  itemCount: number;
 
-  constructor(private productService: ProductService) { 
+  constructor(private productService: ProductService) {
     this.subscription = this.productService.getAll()
       .subscribe(products => {
         this.products = products;
@@ -33,13 +33,15 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
   }
 
   reloadItems(params) {
+    // tslint:disable-next-line: curly
     if (!this.tableResource) return;
 
     this.tableResource.query(params)
-      .then(items => this.items = items);    
+      .then(items => this.items = items);
   }
 
-  filter(query: string) { 
+  filter(query: string) {
+    // tslint:disable-next-line: prefer-const
     let filteredProducts = (query) ?
       this.products.filter(p => p.title.toLowerCase().includes(query.toLowerCase())) :
       this.products;
