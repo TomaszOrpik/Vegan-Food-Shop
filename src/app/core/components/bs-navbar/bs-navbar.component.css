@@ -14,7 +14,7 @@
 }
 
 .badge {
-  background-color: white !important;
-  color: green !important;
+  background-color: transparent !important;
+  color: black !important;
   font-size: 15px;
 }

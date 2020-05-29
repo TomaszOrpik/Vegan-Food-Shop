@@ -2,6 +2,7 @@
 @import "~bootstrap/dist/css/bootstrap.css";
 @import "~font-awesome/css/font-awesome.css";
 
-body { margin-top: 8px ;}
+body { margin-top: 8px; overflow-x: hidden;}
 
 app-root { position: absolute; top: 100px; }
+
