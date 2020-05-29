@@ -1,14 +1,14 @@
 <div class="row no-gutters">
   <div class="col-2">
-    <button 
+    <button *ngIf="quantityActions"
       (click)="removeFromCart()"
       class="btn btn-secondary btn-block">-</button> 
   </div>
   <div class="col text-center quantity">
-    {{ shoppingCart.getQuantity(product) }} in cart
+    {{ shoppingCart.getQuantity(product) }} <span *ngIf="quantityActions">w koszyku</span>
   </div>
   <div class="col-2">
-    <button 
+    <button *ngIf="quantityActions"
       (click)="addToCart()"
       class="btn btn-secondary btn-block">+</button> 
   </div>

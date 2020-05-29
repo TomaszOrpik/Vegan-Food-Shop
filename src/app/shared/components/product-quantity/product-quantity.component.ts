@@ -3,13 +3,16 @@ import { Product } from '../../models/product';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
+  // tslint:disable-next-line: component-selector
   selector: 'product-quantity',
   templateUrl: './product-quantity.component.html',
   styleUrls: ['./product-quantity.component.css']
 })
 export class ProductQuantityComponent  {
   @Input('product') product: Product;
-  @Input('shopping-cart') shoppingCart; 
+  // tslint:disable-next-line: no-input-rename
+  @Input('shopping-cart') shoppingCart;
+  @Input('quantityActions') quantityActions = true;
 
   constructor(private cartService: ShoppingCartService) { }
 

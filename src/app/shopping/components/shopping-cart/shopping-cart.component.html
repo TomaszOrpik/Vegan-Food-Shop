@@ -5,7 +5,7 @@
   <div class="card-body">
     <p>
       W koszyku: {{ cart.totalItemsCount }}
-      <button *ngIf="cart.items.length" (click)="clearCart()" class="float-right btn btn-light btn-sm">WYCZYŚĆ</button>
+      <button *ngIf="cart.items.length && cartActions" (click)="clearCart()" class="float-right btn btn-light btn-sm">WYCZYŚĆ</button>
 
     </p>
   </div>
@@ -27,10 +27,16 @@
         <td>
           {{ item.title }}
         </td>
-        <td>
-          <product-quantity [product]="item" [shopping-cart]="cart">
-          </product-quantity>
+        <td *ngIf="cartActions else noActions">
+            <product-quantity [product]="item" [shopping-cart]="cart">
+            </product-quantity>
         </td>
+        <ng-template #noActions>
+          <td>
+            <product-quantity [product]="item" [shopping-cart]="cart" [quantityActions]="false">
+            </product-quantity>
+        </td>
+        </ng-template>
         <td class="text-right">
           {{ item.totalPrice | currency:'PLN':true }}
         </td>
