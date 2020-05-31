@@ -1,0 +1,13 @@
+.btn:disabled {
+    background-color: darkgray;
+    border-color: darkgray;
+}
+
+.btn:disabled:hover {
+    background-color: darkgray;
+    border-color: darkgray;
+}
+
+h1 {
+    color: green;
+}

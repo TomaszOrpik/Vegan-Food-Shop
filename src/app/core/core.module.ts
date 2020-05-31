@@ -7,11 +7,14 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ContactComponent } from './components/contact/contact.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { ContactSuccessComponent } from './components/contact-success/contact-success.component';
 
 @NgModule({
   imports: [
     SharedModule,
-    RouterModule.forChild([])
+    RouterModule.forChild([
+      { path: 'kontakt/sukces', component: ContactSuccessComponent }
+    ])
   ],
   declarations: [
     BsNavbarComponent,
@@ -19,6 +22,7 @@ import { FooterComponent } from './components/footer/footer.component';
     LoginComponent,
     ContactComponent,
     FooterComponent,
+    ContactSuccessComponent,
   ],
   exports: [
     BsNavbarComponent,

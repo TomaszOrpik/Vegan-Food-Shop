@@ -1,3 +1,31 @@
-<p>
-  contact works!
-</p>
+
+<div class="container defaultHeight">
+  <h1>Kontakt</h1>
+  <form #f="ngForm">
+    <div class="form-group">
+      <label for="">E-mail</label>
+      <input #mail="ngModel" name="mail" [(ngModel)]="contact.mail" type="text" class="form-control" required>
+      <div class="alert alert-danger" *ngIf="mail.touched && mail.invalid">
+        <div *ngIf="mail.errors.required">Wpisz swój adres e-mail!</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="">Temat</label>
+      <input #subject="ngModel" name="subject" [(ngModel)]="contact.subject" type="text" class="form-control" required>
+      <div class="alert alert-danger" *ngIf="subject.touched && subject.invalid">
+        <div *ngIf="subject.errors.required">Wpisz temat wiadomości!</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="">Treść</label>
+      <textarea #description="ngModel" name="description" [(ngModel)]="contact.description" type="text" class="form-control" required></textarea>
+      <div class="alert alert-danger" *ngIf="description.touched && description.invalid">
+        <div *ngIf="description.errors.required">Wpisz treść wiadomości!</div>
+      </div>
+    </div>
+    <button 
+      [disabled]="!f.valid"
+      (click)="sendMessage()"
+      class="btn btn-primary">Wyślij</button>
+  </form>    
+</div>

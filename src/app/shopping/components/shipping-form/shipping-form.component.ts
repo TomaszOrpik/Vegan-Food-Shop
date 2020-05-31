@@ -4,19 +4,20 @@ import { AuthService } from '../../../shared/services/auth.service';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
-import { Order } from "../../../shared/models/order";
+import { Order } from '../../../shared/models/order';
 
 @Component({
+  // tslint:disable-next-line: component-selector
   selector: 'shipping-form',
   templateUrl: './shipping-form.component.html',
   styleUrls: ['./shipping-form.component.css']
 })
 export class ShippingFormComponent implements OnInit, OnDestroy {
   @Input('cart') cart: ShoppingCart;
-  shipping = {}; 
+  shipping = {};
   userSubscription: Subscription;
   userId: string;
-  
+
   constructor(
     private router: Router,
     private authService: AuthService,
@@ -27,13 +28,15 @@ export class ShippingFormComponent implements OnInit, OnDestroy {
     this.userSubscription = this.authService.user$.subscribe(user => this.userId = user.uid);
   }
 
-  ngOnDestroy() { 
+  ngOnDestroy() {
     this.userSubscription.unsubscribe();
   }
 
   async placeOrder() {
+    // tslint:disable-next-line: prefer-const
     let order = new Order(this.userId, this.shipping, this.cart);
+    // tslint:disable-next-line: prefer-const
     let result = await this.orderService.placeOrder(order);
     this.router.navigate(['/order-success', result.key]);
-  }    
+  }
 }
