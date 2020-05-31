@@ -2,7 +2,38 @@
 @import "~bootstrap/dist/css/bootstrap.css";
 @import "~font-awesome/css/font-awesome.css";
 
-body { margin-top: 8px; overflow-x: hidden;}
+body { margin-top: 8px; overflow-x: hidden; margin-bottom: 50px;}
 
 app-root { position: absolute; top: 100px; }
 
+.defaultHeight {
+    min-height: calc(100vh - 150px);
+  }
+
+.colorGreen {
+  color: green;
+}
+
+.colorGreen:hover {
+  color: darkgreen !important;
+}
+
+.btn {
+  background-color: green;
+  border-color: green;
+}
+
+.btn:hover {
+  background-color: darkgreen !important;
+  border-color: darkgreen !important;
+}
+
+.btn-danger {
+  background-color: red;
+  border-color: red;
+}
+
+.btn-danger:hover {
+  background-color: darkred !important;
+  border-color: darkred !important;
+}

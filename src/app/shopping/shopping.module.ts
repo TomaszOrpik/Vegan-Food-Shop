@@ -23,7 +23,7 @@ import { ProductComponent } from './components/product/product.component';
       { path: 'kasa', component: CheckOutComponent },
       { path: 'podsumowanie/:id', component: OrderSuccessComponent },
       { path: 'produkt/:id', component: ProductComponent },
-      { path: 'moje/zamowienia', component: MyOrdersComponent }
+      { path: 'moje/zamowienia', component: MyOrdersComponent, canActivate: [AuthGuard] }
     ]),
     SharedModule
   ],

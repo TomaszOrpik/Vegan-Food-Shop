@@ -1,9 +1,11 @@
-<h1>Orders</h1>
+
+<div class="container defaultHeight">
+  <h1>Zamówienia</h1>
 <table class="table">
   <thead>
     <tr>
-      <th>Customer</th>
-      <th>Date</th>
+      <th>Klient</th>
+      <th>Data</th>
       <th></th>
     </tr>
   </thead> 
@@ -12,8 +14,10 @@
       <td>{{ order.shipping.name }}</td>
       <td>{{ order.datePlaced | date}}</td>
       <td>
-        <a href="#">View</a>
+        <a class="colorGreen" href="#">Wyświetl</a>
       </td>
     </tr>
   </tbody> 
 </table>
+</div>
+

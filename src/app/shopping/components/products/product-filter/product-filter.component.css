@@ -6,3 +6,7 @@
   background-color: green !important;
   border-color: green !important;
 }
+
+.list-group {
+  min-width: 255px;
+}

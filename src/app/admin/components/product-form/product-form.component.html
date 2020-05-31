@@ -1,57 +1,61 @@
 
-<div class="row">
-  <div class="col-md-6">
-    <form #f="ngForm" (ngSubmit)="save(f.value)">
-        <div class="form-group">
-          <label for="title">Nazwa</label>
-          <input #title="ngModel" [(ngModel)]="product.title" name="title" id="title" type="text" class="form-control" required>
-          <div class="alert alert-danger" *ngIf="title.touched && title.invalid">
-            Nazwa wymagana.
+<div class="container defaultHeight">
+  <div class="row">
+    <div class="col-md-6">
+      <form #f="ngForm" (ngSubmit)="save(f.value)">
+          <div class="form-group">
+            <label for="title">Nazwa</label>
+            <input #title="ngModel" [(ngModel)]="product.title" name="title" id="title" type="text" class="form-control" required>
+            <div class="alert alert-danger" *ngIf="title.touched && title.invalid">
+              Nazwa wymagana.
+            </div>
           </div>
-        </div>
-        <div class="form-group">
-          <label for="title">Opis</label>
-          <input #title="ngModel" [(ngModel)]="product.description" name="description" id="description" type="text" class="form-control" required>
-          <div class="alert alert-danger" *ngIf="description.touched && description.invalid">
-            Opis wymagany.
-          </div>
-        </div>         
-        <div class="form-group">
-          <label for="price">Cena</label>
-          <div class="input-group">
-            <span class="input-group-addon">PLN</span>
-            <input #price="ngModel" [(ngModel)]="product.price" name="price" id="price" type="number" class="form-control" required [min]="0">
-          </div>
-          <div class="alert alert-danger" *ngIf="price.touched && price.invalid">
-            <div *ngIf="price.errors.required">Cena wymagana.</div>
-            <div *ngIf="price.errors.min">Cena nie może mieć 0 lub mniej.</div>
-          </div>
-        </div>        
-        <div class="form-group">
-          <label for="category">Kategoria</label>
-          <select #category="ngModel" [(ngModel)]="product.category" name="category" id="category" class="form-control" required>
-            <option value=""></option>
-            <option *ngFor="let c of categories$ | async" [value]="c.$key">
-              {{ c.name }}
-            </option>
-          </select>
-          <div class="alert alert-danger" *ngIf="category.touched && category.invalid">
-            Kategoria jest wymagana.
-          </div>
-        </div>        
-        <div class="form-group">
-          <label for="imageUrl">URL obrazu</label>
-          <input #imageUrl="ngModel" [(ngModel)]="product.imageUrl" name="imageUrl" id="imageUrl" type="text" class="form-control" required url>
-          <div class="alert alert-danger" *ngIf="imageUrl.touched && imageUrl.invalid">
-            <div *ngIf="imageUrl.errors.required">URL obrazu wymagane.</div>
-            <div *ngIf="imageUrl.errors.url">Proszę podać poprawny URL.</div>
-          </div>
-        </div>        
-        <button [disabled]="!f.valid" class="btn btn-primary">Zapisz</button>
-        <button *ngIf="id" type="button" (click)="delete()" class="btn btn-danger">Usuń</button>
-      </form>    
-  </div>
-  <div class="col-md-4">
-    <product-card [product]="product" [show-actions]="false"></product-card>
+          <div class="form-group">
+            <label for="description">Opis</label>
+            <input #description="ngModel" [(ngModel)]="product.description" name="description" id="description" type="text" class="form-control" required>
+            <div class="alert alert-danger" *ngIf="description.touched && description.invalid">
+              Opis wymagany.
+            </div>
+          </div>         
+          <div class="form-group">
+            <label for="price">Cena</label>
+            <div class="input-group">
+              <span class="input-group-addon">PLN</span>
+              <input #price="ngModel" [(ngModel)]="product.price" name="price" id="price" type="number" class="form-control" required [min]="0">
+            </div>
+            <div class="alert alert-danger" *ngIf="price.touched && price.invalid">
+              <div *ngIf="price.errors.required">Cena wymagana.</div>
+              <div *ngIf="price.errors.min">Cena nie może mieć 0 lub mniej.</div>
+            </div>
+          </div>        
+          <div class="form-group">
+            <label for="category">Kategoria</label>
+            <select #category="ngModel" [(ngModel)]="product.category" name="category" id="category" class="form-control" required>
+              <option value=""></option>
+              <option *ngFor="let c of categories$ | async" [value]="c.$key">
+                {{ c.name }}
+              </option>
+            </select>
+            <div class="alert alert-danger" *ngIf="category.touched && category.invalid">
+              Kategoria jest wymagana.
+            </div>
+          </div>        
+          <div class="form-group">
+            <label for="imageUrl">URL obrazu</label>
+            <input #imageUrl="ngModel" [(ngModel)]="product.imageUrl" name="imageUrl" id="imageUrl" type="text" class="form-control" required url>
+            <div class="alert alert-danger" *ngIf="imageUrl.touched && imageUrl.invalid">
+              <div *ngIf="imageUrl.errors.required">URL obrazu wymagane.</div>
+              <div *ngIf="imageUrl.errors.url">Proszę podać poprawny URL.</div>
+            </div>
+          </div>        
+          <button [disabled]="!f.valid" class="btn btn-primary">Zapisz</button>
+          <button *ngIf="id" type="button" (click)="delete()" class="btn btn-danger">Usuń</button>
+        </form>    
+    </div>
+    <div class="col-md-4">
+      <product-card [product]="product" [show-actions]="false"></product-card>
+    </div>
   </div>
 </div>
+
+

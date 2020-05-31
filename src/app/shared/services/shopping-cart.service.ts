@@ -3,8 +3,8 @@ import { ShoppingCart } from '../models/shopping-cart';
 import { Product } from '../models/product';
 import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database';
 import { Injectable } from '@angular/core';
-import 'rxjs/add/operator/take'; 
-import 'rxjs/add/operator/map'; 
+import 'rxjs/add/operator/take';
+import 'rxjs/add/operator/map';
 
 @Injectable()
 export class ShoppingCartService {
@@ -56,8 +56,10 @@ export class ShoppingCartService {
     item$.take(1).subscribe(item => {
       let quantity = (item.quantity || 0) + change;
       if (quantity === 0) item$.remove();
-      else item$.update({ 
+      // tslint:disable-next-line: curly
+      else item$.update({
         title: product.title,
+        description: product.description,
         imageUrl: product.imageUrl,
         price: product.price,
         quantity: quantity

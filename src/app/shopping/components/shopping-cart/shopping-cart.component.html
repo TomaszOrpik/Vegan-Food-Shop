@@ -1,11 +1,11 @@
 
-<div class="container">
+<div [ngClass]="cartActions ? 'container defaultHeight' : 'other'">
   <h1>KOSZYK</h1>
 <div class="card" *ngIf="cart$ | async as cart" style="width: 80%;">
   <div class="card-body">
     <p>
       W koszyku: {{ cart.totalItemsCount }}
-      <button *ngIf="cart.items.length && cartActions" (click)="clearCart()" class="float-right btn btn-light btn-sm">WYCZYŚĆ</button>
+      <button *ngIf="cart.items.length && cartActions" (click)="clearCart()" class="float-right btn btn-danger">WYCZYŚĆ</button>
 
     </p>
   </div>

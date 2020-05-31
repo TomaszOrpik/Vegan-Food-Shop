@@ -2,7 +2,7 @@
   <div class="col-2">
     <button *ngIf="quantityActions"
       (click)="removeFromCart()"
-      class="btn btn-secondary btn-block">-</button> 
+      class="btn btn-primary btn-block">-</button> 
   </div>
   <div class="col text-center quantity">
     {{ shoppingCart.getQuantity(product) }} <span *ngIf="quantityActions">w koszyku</span>
@@ -10,6 +10,6 @@
   <div class="col-2">
     <button *ngIf="quantityActions"
       (click)="addToCart()"
-      class="btn btn-secondary btn-block">+</button> 
+      class="btn btn-primary btn-block">+</button> 
   </div>
 </div>

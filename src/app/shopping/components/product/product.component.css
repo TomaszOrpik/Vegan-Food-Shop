@@ -17,3 +17,7 @@
 .btn.margin-left {
     margin-left: 20px !important;
 }
+
+.tab-content {
+    border-top: 1px green solid;
+}
