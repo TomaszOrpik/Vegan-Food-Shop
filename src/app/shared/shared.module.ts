@@ -1,11 +1,13 @@
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
-import { DataTableModule } from 'angular-4-data-table';
+// import { DataTableModule } from 'angular-4-data-table';
 import { CustomFormsModule } from 'ng2-validation';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+// import { HttpClient } from '@angular/common/http';
+import { DeviceDetectorModule } from 'ngx-device-detector';
 
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { ProductQuantityComponent } from './components/product-quantity/product-quantity.component';
@@ -22,11 +24,13 @@ import { ContactService } from './services/contact.service';
   imports: [
     CommonModule,
     FormsModule,
+    // HttpClient,
+    DeviceDetectorModule.forRoot(),
     CustomFormsModule,
-    DataTableModule,
+    // DataTableModule,
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    NgbModule.forRoot(),
+    NgbModule,
   ],
   declarations: [
     ProductCardComponent,
@@ -38,10 +42,10 @@ import { ContactService } from './services/contact.service';
     CommonModule,
     FormsModule,
     CustomFormsModule,
-    DataTableModule,
+    // DataTableModule,
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    NgbModule.forRoot().ngModule,
+    NgbModule,
   ],
   providers: [
     AuthService,

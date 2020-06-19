@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import { Component, OnInit, OnDestroy, Input } from '@angular/core';
 import { Order } from '../../../shared/models/order';
+import { Shipping } from 'src/app/shared/models/Shipping';
 
 @Component({
   // tslint:disable-next-line: component-selector
@@ -13,8 +14,9 @@ import { Order } from '../../../shared/models/order';
   styleUrls: ['./shipping-form.component.css']
 })
 export class ShippingFormComponent implements OnInit, OnDestroy {
+  // tslint:disable-next-line: no-input-rename
   @Input('cart') cart: ShoppingCart;
-  shipping = {};
+  shipping: Shipping;
   userSubscription: Subscription;
   userId: string;
 

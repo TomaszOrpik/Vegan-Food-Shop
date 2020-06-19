@@ -3,7 +3,8 @@ import { Router } from '@angular/router';
 import { ProductService } from '../../../shared/services/product.service';
 import { CategoryService } from '../../../shared/services/category.service';
 import { Component, OnInit } from '@angular/core';
-import 'rxjs/add/operator/take';
+import { take } from 'rxjs/operators';
+import { Product } from 'src/app/shared/models/product';
 
 @Component({
   selector: 'app-product-form',
@@ -12,7 +13,7 @@ import 'rxjs/add/operator/take';
 })
 export class ProductFormComponent implements OnInit {
   categories$;
-  product = {};
+  product: Product;
   id;
 
   constructor(
@@ -24,7 +25,7 @@ export class ProductFormComponent implements OnInit {
 
     this.id = this.route.snapshot.paramMap.get('id');
     // tslint:disable-next-line: curly
-    if (this.id) this.productService.get(this.id).take(1).subscribe(p => this.product = p);
+    if (this.id) this.productService.get(this.id).valueChanges().pipe(take(1)).subscribe((p: Product) => this.product = p);
   }
 
   save(product) {

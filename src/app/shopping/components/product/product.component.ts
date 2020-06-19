@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ProductService } from 'shared/services/product.service';
-import { Product } from 'shared/models/product';
+import { ProductService } from '../../../shared/services/product.service';
+import { Product } from '../../../shared/models/product';
 import { Router, ActivatedRoute } from '@angular/router';
-import { ShoppingCartService } from 'shared/services/shopping-cart.service';
+import { ShoppingCartService } from '../../../shared/services/shopping-cart.service';
 
 @Component({
   selector: 'app-product',
@@ -12,7 +12,7 @@ import { ShoppingCartService } from 'shared/services/shopping-cart.service';
 export class ProductComponent implements OnInit {
 
   id: string;
-  product: Product;
+  product;
 
   constructor(
     private productService: ProductService,
@@ -22,9 +22,10 @@ export class ProductComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    // tslint:disable-next-line: no-string-literal
     this.id = this.route.snapshot.params['id'];
 
-    this.productService.get(this.id).subscribe(
+    this.productService.get(this.id).valueChanges().subscribe(
       product => this.product = product
     );
   }

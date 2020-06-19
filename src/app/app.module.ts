@@ -13,6 +13,7 @@ import { SharedModule } from './shared/shared.module';
 import { ShoppingModule } from './shopping/shopping.module';
 import { HomeComponent } from './core/components/home/home.component';
 import { ContactComponent } from './core/components/contact/contact.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ContactComponent } from './core/components/contact/contact.component';
       { path: '', component: HomeComponent },
       { path: 'login', component: LoginComponent },
       { path: 'kontakt', component: ContactComponent },
-    ])
+    ]),
+    NgbModule
   ],
   providers: [
     AdminAuthGuard,

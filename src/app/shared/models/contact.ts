@@ -12,3 +12,4 @@ export class Contact {
         this.description = description;
     }
 }
+

@@ -9,9 +9,11 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./product-quantity.component.css']
 })
 export class ProductQuantityComponent  {
+  // tslint:disable-next-line: no-input-rename
   @Input('product') product: Product;
   // tslint:disable-next-line: no-input-rename
   @Input('shopping-cart') shoppingCart;
+  // tslint:disable-next-line: no-input-rename
   @Input('quantityActions') quantityActions = true;
 
   constructor(private cartService: ShoppingCartService) { }

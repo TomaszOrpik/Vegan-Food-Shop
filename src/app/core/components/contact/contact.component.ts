@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { ContactService } from 'shared/services/contact.service';
+import { ContactService } from '../../../shared/services/contact.service';
+import { Contact } from 'src/app/shared/models/contact';
 
 @Component({
   selector: 'app-contact',
@@ -8,9 +9,10 @@ import { ContactService } from 'shared/services/contact.service';
   styleUrls: ['./contact.component.css']
 })
 export class ContactComponent {
-  contact = {};
+  contact: Contact;
 
   constructor(private router: Router,
+    // tslint:disable-next-line: align
     private contactService: ContactService
     ) {}
 

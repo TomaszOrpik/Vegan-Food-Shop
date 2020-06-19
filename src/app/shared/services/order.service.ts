@@ -19,11 +19,8 @@ export class OrderService {
   }
 
   getOrdersByUser(userId: string) {
-    return this.db.list('/orders', {
-      query: {
-        orderByChild: 'userId',
-        equalTo: userId
-      }
+    return this.db.list('/orders', ref => {
+      return ref.orderByChild('userId').equalTo(userId);
     });
   }
 }

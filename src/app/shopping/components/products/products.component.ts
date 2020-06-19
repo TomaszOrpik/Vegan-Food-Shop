@@ -5,7 +5,7 @@ import { Product } from '../../../shared/models/product';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../../../shared/services/product.service';
 import { Component, OnInit } from '@angular/core';
-import 'rxjs/add/operator/switchMap';
+import { switchMap } from 'rxjs-compat/operator/switchMap';
 
 @Component({
   selector: 'app-products',
@@ -16,7 +16,7 @@ export class ProductsComponent implements OnInit  {
   products: Product[] = [];
   filteredProducts: Product[] = [];
   category: string;
-  cart$: Observable<ShoppingCart>;
+  cart$: Promise<ShoppingCart>;
 
   constructor(
     private route: ActivatedRoute,
@@ -26,19 +26,21 @@ export class ProductsComponent implements OnInit  {
   }
 
   async ngOnInit() {
-    this.cart$ = await this.shoppingCartService.getCart();
+    console.log(this.filteredProducts);
+    this.cart$ = this.shoppingCartService.getCart();
+    console.log(this.cart$);
     this.populateProducts();
   }
 
   private populateProducts() {
     this.productService
-      .getAll()
-      .switchMap(products => {
+      .getAll().valueChanges()
+      .switchMap((products: Product[]) => {
         this.products = products;
         return this.route.queryParamMap;
       })
       .subscribe(params => {
-        this.category = params.get('category');
+        this.category = params.get('/category');
         this.applyFilter();
       });
   }

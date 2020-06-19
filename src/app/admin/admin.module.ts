@@ -1,6 +1,5 @@
 import { AdminAuthGuard } from './services/admin-auth-guard.service';
 import { RouterModule } from '@angular/router';
-import { DataTableModule } from 'angular-4-data-table';
 import { SharedModule } from './../shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { ProductFormComponent } from './components/product-form/product-form.component';
@@ -8,7 +7,7 @@ import { AdminProductsComponent } from './components/admin-products/admin-produc
 import { AdminOrdersComponent } from './components/admin-orders/admin-orders.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AuthGuard } from 'shared/services/auth-guard.service';
+import { AuthGuard } from './../shared/services/auth-guard.service';
 
 @NgModule({
   imports: [

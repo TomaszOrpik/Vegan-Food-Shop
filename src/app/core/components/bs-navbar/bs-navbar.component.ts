@@ -6,20 +6,21 @@ import { AuthService } from '../../../shared/services/auth.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
+  // tslint:disable-next-line: component-selector
   selector: 'bs-navbar',
   templateUrl: './bs-navbar.component.html',
   styleUrls: ['./bs-navbar.component.css']
 })
 export class BsNavbarComponent implements OnInit {
   appUser: AppUser;
-  cart$: Observable<ShoppingCart>;
+  cart$: Promise<ShoppingCart>;
 
   constructor(private auth: AuthService, private shoppingCartService: ShoppingCartService) { 
   }
 
-  async ngOnInit() { 
+  async ngOnInit() {
     this.auth.appUser$.subscribe(appUser => this.appUser = appUser);
-    this.cart$ = await this.shoppingCartService.getCart();
+    this.cart$ = this.shoppingCartService.getCart();
   }
 
   logout() {

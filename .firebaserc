@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "vegeshop-714fb"
+  },
+  "targets": {
+    "vegeshop-714fb": {
+      "hosting": {
+        "shop": [
+          "vegeshop-714fb"
+        ]
+      }
+    }
   }
 }

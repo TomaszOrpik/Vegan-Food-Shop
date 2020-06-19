@@ -6,11 +6,11 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/observable/of';
-import * as firebase from 'firebase';
+import * as firebase from 'firebase/app';
 
 @Injectable()
 export class AuthService {
-  user$: Observable<firebase.User>;
+  user$;
 
   constructor(
     private userService: UserService,
