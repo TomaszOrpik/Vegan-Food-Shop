@@ -16,7 +16,7 @@ export class ProductsComponent implements OnInit  {
   products: Product[] = [];
   filteredProducts: Product[] = [];
   category: string;
-  cart$: Promise<ShoppingCart>;
+  cart$: ShoppingCart;
 
   constructor(
     private route: ActivatedRoute,
@@ -27,8 +27,7 @@ export class ProductsComponent implements OnInit  {
 
   async ngOnInit() {
     console.log(this.filteredProducts);
-    this.cart$ = this.shoppingCartService.getCart();
-    console.log(this.cart$);
+    this.cart$ = await this.shoppingCartService.getCart();
     this.populateProducts();
   }
 
