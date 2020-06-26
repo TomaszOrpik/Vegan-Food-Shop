@@ -8,15 +8,14 @@ import { ShoppingCart } from 'src/app/shared/models/shopping-cart';
   styleUrls: ['./shopping-cart.component.css']
 })
 export class ShoppingCartComponent implements OnInit {
-  cart$: Promise<ShoppingCart>;
+  cart$: ShoppingCart;
 
-  // tslint:disable-next-line: no-input-rename
-  @Input('cartActions') cartActions = true;
+  @Input() cartActions = true;
 
   constructor(private shoppingCartService: ShoppingCartService) { }
 
   async ngOnInit() {
-    this.cart$ = this.shoppingCartService.getCart();
+    this.cart$ = await this.shoppingCartService.getCart();
   }
 
   clearCart() {

@@ -8,6 +8,6 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./shopping-cart-summary.component.css']
 })
 export class ShoppingCartSummaryComponent  {
-  // tslint:disable-next-line: no-input-rename
-  @Input('cart') cart: ShoppingCart;
+
+  @Input() cart: ShoppingCart;
 }

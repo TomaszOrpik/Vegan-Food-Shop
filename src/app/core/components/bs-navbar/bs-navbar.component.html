@@ -28,8 +28,8 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/koszyk">
             <span><b>KOSZYK</b></span>
-            <span class="badge badge-warning badge-pill" *ngIf="cart$ | async as cart">
-              ({{ cart.totalItemsCount }})
+            <span class="badge badge-warning badge-pill">
+              ({{ cart$.totalItemsCount }})
             </span>
           </a>
         </li>

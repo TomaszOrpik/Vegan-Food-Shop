@@ -9,8 +9,8 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ProductFilterComponent implements OnInit {
   categories$;
-  // tslint:disable-next-line: no-input-rename
-  @Input('category') category;
+
+  @Input() category;
 
   constructor(categoryService: CategoryService) {
     this.categories$ = categoryService.getAll();
