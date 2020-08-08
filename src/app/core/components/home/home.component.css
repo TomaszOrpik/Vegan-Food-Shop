@@ -32,11 +32,6 @@ img.bg {
     height: 85vh;
   }
   
-  header.masthead .masthead-content {
-    z-index: 1;
-    position: relative;
-  }
-  
   header.masthead .masthead-content .masthead-heading {
     font-size: 4rem;
     color: #025600;
@@ -63,6 +58,7 @@ img.bg {
       font-size: 6rem;
     }
     header.masthead .masthead-content .masthead-subheading {
+      padding-top: 60px;
       font-size: 4rem;
     }
   }
@@ -115,6 +111,10 @@ img.bg {
     right: 0;
     top: 30vh;
   }
+
+.customButton.main {
+  top: 50vh;
+}
   
   button {
     display: block;

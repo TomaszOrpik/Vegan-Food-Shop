@@ -5,19 +5,21 @@
           <ng-container *ngFor="let p of filteredProducts; let i = index">
             <div class="col">
               <product-card 
+              [cart]="cart"
               [product]="p" 
-              [shoppingCart]="cart$"
               ></product-card>
             </div>
-            <div *ngIf="(i + 1) % 3 === 0" class="w-100"></div>
+            <div id="mobile" *ngIf="(i + 1) % 1 === 0" class="w-100"></div>
+            <div id="desktop" *ngIf="(i + 1) % 3 === 0" class="w-100"></div>
           </ng-container>
         </div>
       </div>
       <div class="col-3 float-right">
-        <div class="col-12">
-          <app-shopping-cart [cartActions]="false"></app-shopping-cart>
+        <div class="col-12 sticky-top" style="top: 12vh;">
+          <app-contact *ngIf="contactVisible"></app-contact>
+          <app-shopping-cart [cartActions]="false" [cart]="cart"></app-shopping-cart>
+          <product-filter [category]="category"></product-filter>
         </div>
-        <product-filter [category]="category"></product-filter>
       </div>
     </div>
   </div>

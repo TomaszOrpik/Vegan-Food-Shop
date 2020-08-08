@@ -2,59 +2,58 @@
 <div class="container defaultHeight">
   <div class="row">
     <div class="col-md-6">
-      <form #f="ngForm" (ngSubmit)="save(f.value)">
-          <div class="form-group">
-            <label for="title">Nazwa</label>
-            <input #title="ngModel" [(ngModel)]="product.title" name="title" id="title" type="text" class="form-control" required>
-            <div class="alert alert-danger" *ngIf="title.touched && title.invalid">
-              Nazwa wymagana.
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="description">Opis</label>
-            <input #description="ngModel" [(ngModel)]="product.description" name="description" id="description" type="text" class="form-control" required>
-            <div class="alert alert-danger" *ngIf="description.touched && description.invalid">
-              Opis wymagany.
-            </div>
-          </div>         
-          <div class="form-group">
-            <label for="price">Cena</label>
-            <div class="input-group">
-              <span class="input-group-addon">PLN</span>
-              <input #price="ngModel" [(ngModel)]="product.price" name="price" id="price" type="number" class="form-control" required [min]="0">
-            </div>
-            <div class="alert alert-danger" *ngIf="price.touched && price.invalid">
-              <div *ngIf="price.errors.required">Cena wymagana.</div>
-              <div *ngIf="price.errors.min">Cena nie może mieć 0 lub mniej.</div>
-            </div>
-          </div>        
-          <div class="form-group">
-            <label for="category">Kategoria</label>
-            <select #category="ngModel" [(ngModel)]="product.category" name="category" id="category" class="form-control" required>
-              <option value=""></option>
-              <option *ngFor="let c of categories$ | async" [value]="c.$key">
-                {{ c.name }}
-              </option>
-            </select>
-            <div class="alert alert-danger" *ngIf="category.touched && category.invalid">
-              Kategoria jest wymagana.
-            </div>
-          </div>        
-          <div class="form-group">
-            <label for="imageUrl">URL obrazu</label>
-            <input #imageUrl="ngModel" [(ngModel)]="product.imageUrl" name="imageUrl" id="imageUrl" type="text" class="form-control" required url>
-            <div class="alert alert-danger" *ngIf="imageUrl.touched && imageUrl.invalid">
-              <div *ngIf="imageUrl.errors.required">URL obrazu wymagane.</div>
-              <div *ngIf="imageUrl.errors.url">Proszę podać poprawny URL.</div>
-            </div>
-          </div>        
-          <button [disabled]="!f.valid" class="btn btn-primary">Zapisz</button>
-          <button *ngIf="id" type="button" (click)="delete()" class="btn btn-danger">Usuń</button>
-        </form>    
-    </div>
+      <form class="form">
+        <table class="full-width" cellspacing="0"><tr>
+          <td><mat-form-field class="full-width" style="width: 500px;">
+            <mat-label>Nazwa</mat-label>
+            <input matInput [formControl]="name" [(ngModel)]="formName" type="mail" placeholder="Nazwa Przedmiotu" required>
+            <mat-error *ngIf="name.hasError('required')">Nazwa wymagana!</mat-error>
+          </mat-form-field></td>
+        </tr></table>
+        <table class="full-width" cellspacing="0"><tr>
+          <td><mat-form-field class="full-width"  style="width: 500px;">
+            <mat-label>Kategoria</mat-label>
+            <mat-select matInput [formControl]="category" [(ngModel)]="formCategory" placeholder="Kategoria Przedmiotu" required>
+              <mat-option *ngFor="let category of categories$" [value]="category.name">
+                {{category.name}}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="name.hasError('required')">Nazwa wymagana!</mat-error>
+          </mat-form-field></td>
+        </tr></table>
+        <table class="full-width" cellspacing="0"><tr>
+          <td><mat-form-field class="full-width"  style="width: 500px;">
+            <mat-label>Opis</mat-label>
+            <textarea matInput [formControl]="description" rows="15" [(ngModel)]="formDescription" placeholder="Opis przedmiotu..." required></textarea>
+            <mat-error *ngIf="description.hasError('required')">Opis jest wymagany!!</mat-error>
+          </mat-form-field></td>
+        </tr>
+        </table>
+        <p>
+          <mat-form-field class="full-width"  style="width: 500px;">
+            <mat-label>Cena</mat-label>
+            <input matInput [formControl]="price" [(ngModel)]="formPrice" placeholder="1" type="number" required>
+            <mat-error *ngIf="price.hasError('required')">Cena jest wymagana!</mat-error>
+          </mat-form-field>
+        </p>
+        <table class="full-width" cellspacing="0"><tr>
+          <td><mat-form-field class="full-width"  style="width: 500px;">
+            <mat-label>Link do obrazu</mat-label>
+            <input matInput [formControl]="url" [(ngModel)]="formUrl" type="url" placeholder="www.example.com" required>
+            <mat-error *ngIf="description.hasError('required')">Adres obrazu jest wymagany!!</mat-error>
+          </mat-form-field></td>
+        </tr>
+        </table>
+      </form>
+      <div class="buttonsContainer">
+        <button class="btn" style="margin-right: 20px;" (click)="save(product)">Zapisz</button>
+        <button class="btn btn-danger" (click)="delete()">Usuń</button>
+      </div>
+      <!--save button and delete button-->
+    </div> 
     <div class="col-md-4">
-      <product-card [product]="product" [show-actions]="false"></product-card>
-    </div>
+      <product-card [product]="product" [showActions]="false"></product-card>
+    </div> 
   </div>
 </div>
 

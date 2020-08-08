@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormControl, Validators } from '@angular/forms';
+
 import { ContactService } from '../../../shared/services/contact.service';
 import { Contact } from 'src/app/shared/models/contact';
 
@@ -9,24 +11,26 @@ import { Contact } from 'src/app/shared/models/contact';
   styleUrls: ['./contact.component.css']
 })
 export class ContactComponent {
-  contact: Contact;
+  formMail: string;
+  formSubject: string;
+  formBody: string;
+
+  mail = new FormControl('', [Validators.required]);
+  subject = new FormControl('', [Validators.required]);
+  body = new FormControl('', [Validators.required]);
 
   constructor(private router: Router,
-    // tslint:disable-next-line: align
-    private contactService: ContactService
-    ) {}
+              private contactService: ContactService ) {}
 
   async sendMessage() {
 
-    // tslint:disable-next-line: prefer-const
-    let now = new Date();
-    // tslint:disable-next-line: prefer-const
-    let detailContact = {
-      date: `${now.getDay()}/${now.getMonth()}/${now.getFullYear()}`,
-      message: this.contact
-    };
-    // tslint:disable-next-line: prefer-const
-    let result = await this.contactService.sendMessage(detailContact);
+    const contact = new Contact(
+      this.formMail,
+      this.formSubject,
+      this.formBody
+    );
+
+    const result = await this.contactService.sendMessage(contact);
     this.router.navigateByUrl('/kontakt/sukces');
   }
 }

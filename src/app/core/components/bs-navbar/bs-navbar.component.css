@@ -4,9 +4,11 @@
 }
 .navbar {
   background-color: white !important;
+    border-bottom: 2px solid green;
+    border-radius: 0px 0px 25px 25px;
 }
 .navbar-brand img{
-  width: 100px;
+  width: 80px;
   height: 80px;
 }
 .nav-link:hover, .nav-link:active {

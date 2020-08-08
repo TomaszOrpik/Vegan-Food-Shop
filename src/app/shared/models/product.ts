@@ -1,6 +1,6 @@
 
 export interface Product {
-  $key: string;
+  id: string;
   title: string;
   description: string;
   price: number;

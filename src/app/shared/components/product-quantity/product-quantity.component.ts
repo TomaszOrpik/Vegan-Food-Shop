@@ -15,14 +15,16 @@ export class ProductQuantityComponent  {
   @Input() shoppingCart: ShoppingCart;
   @Input() quantityActions = true;
 
-  constructor(private cartService: ShoppingCartService) { }
+  constructor() { }
 
   addToCart() {
-    this.cartService.addToCart(this.product);
+    this.shoppingCart.addItem(this.product);
+    document.getElementById('cartCounter').innerHTML = this.shoppingCart.totalItemsCount().toString();
   }
 
   removeFromCart() {
-    this.cartService.removeFromCart(this.product);
+    this.shoppingCart.removeItem(this.product);
+    document.getElementById('cartCounter').innerHTML = this.shoppingCart.totalItemsCount().toString();
   }
 
 

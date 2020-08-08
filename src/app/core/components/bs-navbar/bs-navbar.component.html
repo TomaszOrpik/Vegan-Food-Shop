@@ -3,7 +3,7 @@
 <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
   <div class="container">
     <a class="navbar-brand" routerLink="/">
-      <img src="https://i.imgur.com/mMLBLkd.png">
+      <img src="https://i.imgur.com/h7zwP3Y.png">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -21,16 +21,14 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/kontakt">
+          <a class="nav-link" routerLink="/sklep" [queryParams]="{ kontakt: true }">
             <span><b>KONTAKT</b></span>
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="/koszyk">
             <span><b>KOSZYK</b></span>
-            <span class="badge badge-warning badge-pill">
-              ({{ cart$.totalItemsCount }})
-            </span>
+            <span class="badge badge-warning badge-pill">( <span id="cartCounter">0</span> )</span>
           </a>
         </li>
         <li ngbDropdown *ngIf="appUser; else anonymousUser" class="nav-item dropdown">
@@ -39,10 +37,10 @@
           </a>
           <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
             <a class="dropdown-item" routerLink="/moje/zamowienia">Moje Zamówienia</a>
-            <ng-container *ngIf="appUser.isAdmin">
+            <!--<ng-container *ngIf="appUser.isAdmin"> to nie potrzebne będzie w dashboard
               <a class="dropdown-item" routerLink="/admin/zamowienia">Zarządzaj Zamówieniami</a>
               <a class="dropdown-item" routerLink="/admin/sklep">Zarządzaj Produktami</a>
-            </ng-container>
+            </ng-container>-->
             <a class="dropdown-item" (click)="logout()">Wyloguj</a>
           </div>
         </li>

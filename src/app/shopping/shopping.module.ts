@@ -14,6 +14,7 @@ import { ShippingFormComponent } from './components/shipping-form/shipping-form.
 import { ShoppingCartSummaryComponent } from './components/shopping-cart-summary/shopping-cart-summary.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { ProductComponent } from './components/product/product.component';
+import { CoreModule } from '../core/core.module';
 
 @NgModule({
   imports: [
@@ -21,12 +22,14 @@ import { ProductComponent } from './components/product/product.component';
       { path: 'sklep', component: ProductsComponent },
       { path: 'koszyk', component: ShoppingCartComponent },
       { path: 'kasa', component: CheckOutComponent },
-      { path: 'podsumowanie/:id', component: OrderSuccessComponent },
+      { path: 'podsumowanie/:id', component: OrderSuccessComponent, canActivate: [AuthGuard] },
       { path: 'produkt/:id', component: ProductComponent },
       { path: 'moje/zamowienia', component: MyOrdersComponent, canActivate: [AuthGuard] }
     ]),
-    SharedModule
+    SharedModule,
+    CoreModule
   ],
+  exports: [RouterModule],
   declarations: [
     ProductsComponent,
     ShoppingCartComponent,

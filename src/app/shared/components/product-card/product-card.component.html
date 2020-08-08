@@ -1,21 +1,28 @@
 <div *ngIf="product.title" class="card">
-  <a class="clickable" (click)="redirect()">
-  <img *ngIf="product.imageUrl" class="card-img-top" [src]="product.imageUrl" alt="{{ product.title }}">
-</a>
+  <div *ngIf="showActions then canClick; else cantClick"></div>
+  <ng-template #canClick>
+    <a class="clickable" (click)="redirect()">
+      <img *ngIf="product.imageUrl" class="card-img-top" [src]="product.imageUrl" alt="{{ product.title }}">
+    </a>
+  </ng-template>
+  <ng-template #cantClick>
+    <img *ngIf="product.imageUrl" class="card-img-top" [src]="product.imageUrl" alt="{{ product.title }}" style="border-bottom: 2px solid green;">
+  </ng-template>
   <div class="card-body">
     <h4 class="card-title">{{ product.title }}</h4>
-    <p class="card-text">{{ product.price | currency:'PLN':true }}</p>
+    <p *ngIf="!showActions" class="card-text" style="border-bottom: 2px solid green;">{{ product.description }}</p>
+    <p class="card-text"> {{ product.price | currency:'PLN ':true }}</p>
   </div>
-  <div *ngIf="showActions && shoppingCart" class="card-footer">
-    <div *ngIf="shoppingCart.getQuantity(product) === 0; then zeroQuantity else updateQuantity"></div>
+ <div *ngIf="showActions && cart" class="card-footer">
+    <div *ngIf="cart.getQuantity(product) === 0; then zeroQuantity else updateQuantity"></div>
       <ng-template #zeroQuantity>
         <button 
         (click)="addToCart()"
         class="btn btn-primary btn-block">Dodaj do koszyka</button>
       </ng-template>
       <ng-template #updateQuantity>
-        <product-quantity [product]="product" [shopping-cart]="shoppingCart">
+        <product-quantity [product]="product" [shoppingCart]="cart">
         </product-quantity>
-      </ng-template>
+      </ng-template> 
   </div>
 </div>    

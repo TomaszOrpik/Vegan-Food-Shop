@@ -6,3 +6,18 @@
     height: 50px;
     line-height: 1cm;
   }
+
+.leftFooter { 
+  float: left;
+  width: 75%;
+}
+.leftFooter>h5 {
+  padding-top: 10px;
+}
+.rightFooter { 
+  float: right; 
+  width: 25%;
+}
+.rightFooter>h5 {
+  padding-top: 10px;
+}

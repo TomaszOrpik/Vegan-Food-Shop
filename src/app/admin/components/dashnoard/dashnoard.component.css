@@ -1,0 +1,49 @@
+
+mat-icon {
+    margin: 2vh;
+    font-size: 6vh;
+}
+
+.iconMail>.nav-link, .iconBuyed>.nav-link, .iconNewOrder>.nav-link,
+.global>.nav-link, .users>.nav-link, .sessions>.nav-link {
+    color: white;
+    padding: 0;
+}
+
+.nav-link:hover, .nav-link:active {
+    color: darkgreen !important;
+  }
+
+  .nav-link .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: green;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    top: 15px;
+    left: 100%;
+  }
+
+.link2 { top: calc(15px + 10vh) !important; }
+.link3 { top: calc(5px + 20vh) !important; }
+.link4 { top: calc(30vh - 5px) !important; }
+.link5 { top: calc(40vh - 30px) !important; }
+.link6 { top: calc(50vh - 40px) !important; }
+  
+  .nav-link.tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    right: 100%;
+    margin-top: 5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent black transparent transparent;
+  }
+  .nav-link:hover .tooltiptext {
+    visibility: visible;
+  }

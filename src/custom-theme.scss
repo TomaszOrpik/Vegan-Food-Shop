@@ -1,0 +1,16 @@
+
+@import '~@angular/material/_theming';
+
+@include mat-core();
+
+$shop-primary: mat-palette($mat-green, 600);
+$shop-accent: mat-palette($mat-green, 600);
+
+// The warn palette is optional (defaults to red).
+$shop-warn: mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$shop-theme: mat-light-theme($shop-primary, $shop-accent, $shop-warn);
+
+@include angular-material-theme($shop-theme);
+

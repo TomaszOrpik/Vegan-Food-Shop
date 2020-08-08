@@ -1,14 +1,18 @@
 
 export class Shipping {
     name: string;
-    addressLine1: string;
-    addressLine2: string;
+    surname: string;
+    street: string;
+    postcode: number;
     city: string;
+    region: string;
 
-    constructor(name, addressLine1, addressLine2, city) {
+    constructor(name: string, surname: string, street: string, postcode: number, city: string, region: string) {
         this.name = name;
-        this.addressLine1 = addressLine1;
-        this.addressLine2 = addressLine2;
+        this.surname = surname;
+        this.street = street;
+        this.postcode = postcode;
         this.city = city;
+        this.region = region;
     }
 }

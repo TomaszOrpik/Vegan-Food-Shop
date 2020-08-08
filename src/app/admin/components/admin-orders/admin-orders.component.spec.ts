@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AdminOrdersComponent } from './admin-orders.component';
+import { AngularFireList } from 'angularfire2/database';
 
 describe('AdminOrdersComponent', () => {
   let component: AdminOrdersComponent;

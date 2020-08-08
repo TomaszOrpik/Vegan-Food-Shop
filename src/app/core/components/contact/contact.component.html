@@ -1,31 +1,34 @@
 
-<div class="container defaultHeight">
+<div class="container">
   <h1>Kontakt</h1>
-  <form #f="ngForm">
-    <div class="form-group">
-      <label for="">E-mail</label>
-      <input #mail="ngModel" name="mail" [(ngModel)]="contact.mail" type="text" class="form-control" required>
-      <div class="alert alert-danger" *ngIf="mail.touched && mail.invalid">
-        <div *ngIf="mail.errors.required">Wpisz swój adres e-mail!</div>
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="">Temat</label>
-      <input #subject="ngModel" name="subject" [(ngModel)]="contact.subject" type="text" class="form-control" required>
-      <div class="alert alert-danger" *ngIf="subject.touched && subject.invalid">
-        <div *ngIf="subject.errors.required">Wpisz temat wiadomości!</div>
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="">Treść</label>
-      <textarea #description="ngModel" name="description" [(ngModel)]="contact.description" type="text" class="form-control" required></textarea>
-      <div class="alert alert-danger" *ngIf="description.touched && description.invalid">
-        <div *ngIf="description.errors.required">Wpisz treść wiadomości!</div>
-      </div>
-    </div>
-    <button 
-      [disabled]="!f.valid"
-      (click)="sendMessage()"
-      class="btn btn-primary">Wyślij</button>
-  </form>    
+  <form class="form">
+    <table class="full-width" cellspacing="0"><tr>
+      <td><mat-form-field class="full-width">
+        <mat-label>E-mail</mat-label>
+        <input matInput [formControl]="mail" [(ngModel)]="formMail" type="mail" placeholder="name@example.com" required>
+        <mat-error *ngIf="mail.hasError('required')">Adres e-mail wymagany!</mat-error>
+      </mat-form-field></td>
+    </tr></table>
+    <p>
+      <mat-form-field class="full-width">
+        <mat-label>Temat</mat-label>
+        <input matInput [formControl]="subject" [(ngModel)]="formSubject" placeholder="Pytanie" required>
+        <mat-error *ngIf="subject.hasError('required')">Temat wymagany!</mat-error>
+      </mat-form-field>
+    </p>
+    <table class="full-width" cellspacing="0"><tr>
+      <td><mat-form-field class="full-width">
+        <mat-label>Treść</mat-label>
+        <textarea matInput [formControl]="body" [(ngModel)]="formBody" placeholder="Zwracam się z pytaniem..." required></textarea>
+        <mat-error *ngIf="body.hasError('required')">Treść maila wymagana!!</mat-error>
+      </mat-form-field></td>
+    </tr>
+    </table>
+    <button class="confirmButton" *ngIf="!mail.hasError('required') && !subject.hasError('required') && !body.hasError('required')"
+    mat-button color="primary"
+    (click)='sendMessage()'
+    >
+      Wyślij
+    </button>
+  </form>
 </div>

@@ -8,16 +8,20 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./product-filter.component.css']
 })
 export class ProductFilterComponent implements OnInit {
-  categories$;
+  categories$: string[] = [];
 
-  @Input() category;
+  // tslint:disable-next-line: no-input-rename
+  @Input('category') category;
 
-  constructor(categoryService: CategoryService) {
-    this.categories$ = categoryService.getAll();
-    console.log(this.categories$);
-  }
-
+  constructor(private categoryService: CategoryService) { }
+  //ng nie działa, bo chce promise dostać...  zeby być async
   ngOnInit() {
+    this.categoryService.getAll().subscribe(categories =>
+      {
+        categories.forEach((category: any) => {
+          this.categories$.push(category.name);
+        });
+    });
   }
 
 }

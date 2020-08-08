@@ -6,6 +6,7 @@
 
 .clickable {
   min-height: 255px;
+  border-bottom: 2px solid green;
 }
 
 .card-footer {

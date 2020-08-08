@@ -1,55 +1,37 @@
 <div class="container defaultHeight">
   <p>
-    <a routerLink="/admin/sklep/nowy" class="btn btn-primary">Nowy Produkt</a>
-  </p>
-  <p>
-    <input 
-      #query
-      (keyup)="filter(query.value)"
-      type="text" class="form-control" placeholder="Szukaj...">
+    <a routerLink="/admin/sklep/nowy" class="btn btn-primary" style="margin: 25px;">Nowy Produkt</a>
+    <button class="btn btn-primary" style="margin: 25px;" (click)="RefreshDatabase()">Przywróć Domyślne</button>
   </p>
 
+  <table mat-table [dataSource]="products" class="mat-elevation-z8">
   
-  <!-- <data-table
-    [items]="items"
-    [itemCount]="itemCount"
-    (reload)="reloadItems($event)">
-    <data-table-column
-      [property]="'title'"  
-      [header]="'Title'"
-      [sortable]="true"
-      [resizable]="true"
-    >
-    </data-table-column>
+    <ng-container matColumnDef="Nazwa">
+      <th mat-header-cell *matHeaderCellDef> Nazwa </th>
+      <td mat-cell *matCellDef="let product"> {{product.title}} </td>
+    </ng-container>
   
-    <data-table-column
-    [property]="'description'"  
-    [header]="'Description'"
-    [sortable]="true"
-    [resizable]="true"
-  >
-  </data-table-column>
-    
-    <data-table-column
-      [property]="'price'"  
-      [header]="'Price'"
-      [sortable]="true"
-      [resizable]="true"
-    >
-      <ng-template #dataTableCell let-item="item">
-        {{ item.price | currency:'PLN':true }}
-      </ng-template>
-    </data-table-column>
+    <ng-container matColumnDef="Opis">
+      <th mat-header-cell *matHeaderCellDef> Opis </th>
+      <td mat-cell *matCellDef="let element"> {{(element.description | slice:0:32) + '...'}} </td>
+    </ng-container>
   
-    <data-table-column
-      [property]="'$key'"  
-    >
-      <ng-template #dataTableCell let-item="item">
-        <a class="colorGreen" [routerLink]="['/admin/sklep/', item.$key]">Edytuj</a>
-      </ng-template>
-    </data-table-column>
+    <ng-container matColumnDef="Cena">
+      <th mat-header-cell *matHeaderCellDef> Cena </th>
+      <td mat-cell *matCellDef="let element"> {{element.price | currency:'PLN ':true }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Akcje">
+      <th mat-header-cell *matHeaderCellDef> Akcje </th>
+      <td mat-cell *matCellDef="let element">
+        <button class="btn" style="margin: 25px;" (click)="redirect(element)">Edytuj</button>
+        <button class="btn btn-danger" style="margin: 25px;" (click)="DeleteProduct(element)">Usuń</button>
+      </td>
+    </ng-container>
   
-  </data-table> -->
   
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
 </div>
 

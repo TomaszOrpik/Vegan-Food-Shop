@@ -3,7 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import { ShoppingCartService } from '../../../shared/services/shopping-cart.service';
 import { AppUser } from '../../../shared/models/app-user';
 import { AuthService } from '../../../shared/services/auth.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   // tslint:disable-next-line: component-selector
@@ -13,14 +13,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BsNavbarComponent implements OnInit {
   appUser: AppUser;
-  cart$: ShoppingCart;
+  cart: ShoppingCart;
+  quantity = 0;
 
-  constructor(private auth: AuthService, private shoppingCartService: ShoppingCartService) { 
+  constructor(private auth: AuthService, private shoppingCartService: ShoppingCartService) {
   }
 
-  async ngOnInit() {
+  ngOnInit() {
     this.auth.appUser$.subscribe(appUser => this.appUser = appUser);
-    this.cart$ = await this.shoppingCartService.getCart();
+    this.cart = this.shoppingCartService.loadCart();
   }
 
   logout() {

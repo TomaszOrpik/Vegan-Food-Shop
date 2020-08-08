@@ -1,34 +1,47 @@
-<form #f="ngForm">
-  <div class="form-group">
-    <label for="">Imię i Nazwisko</label>
-    <input #name="ngModel" name="name" [(ngModel)]="shipping.name" type="text" class="form-control" required>
-    <div class="alert alert-danger" *ngIf="name.touched && name.invalid">
-      <div *ngIf="name.errors.required">Wpisz imię i nazwisko!</div>
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="">Adres</label>
-    <input #addressLine1="ngModel" name="addressLine1" [(ngModel)]="shipping.addressLine1" type="text" class="form-control" placeholder="Linia 1" required>
-    <div class="alert alert-danger" *ngIf="addressLine1.touched && addressLine1.invalid">
-      <div *ngIf="addressLine1.errors.required">Wpisz nazwę ulicy i nr domu!</div>
-    </div>
-  </div>
-  <div class="form-group">
-    <label for=""></label>
-    <input #addressLine2="ngModel" name="addressLine2" [(ngModel)]="shipping.addressLine2" type="text" class="form-control" placeholder="Linia 2" required>
-    <div class="alert alert-danger" *ngIf="addressLine2.touched && addressLine2.invalid">
-      <div *ngIf="addressLine2.errors.required">Wpisz kod pocztowy!</div>
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="">Miasto</label>
-    <input #city="ngModel" name="city" [(ngModel)]="shipping.city" type="text" class="form-control" required>
-    <div class="alert alert-danger" *ngIf="city.touched && city.invalid">
-      <div *ngIf="city.errors.required">Wpisz miasto!</div>
-    </div>
-  </div>
-  <button 
-    [disabled]="!f.valid"
-    (click)="placeOrder()"
-    class="btn btn-primary">Zamów</button>
-</form>    
+
+<form class="form">
+  <table class="full-width" cellspacing="0"><tr>
+    <td><mat-form-field class="full-width">
+      <mat-label>Imię</mat-label>
+      <input matInput [formControl]="name" [(ngModel)]="formName" required>
+      <mat-error *ngIf="name.hasError('required')">Imię wymagane!</mat-error>
+    </mat-form-field></td>
+    <td style="padding-left: 50px;"><mat-form-field class="full-width">
+      <mat-label>Nazwisko</mat-label>
+      <input matInput [formControl]="surname" [(ngModel)]="formSurname" required>
+      <mat-error *ngIf="surname.hasError('required')">Nazwisko wymagane!</mat-error>
+    </mat-form-field></td>
+  </tr></table>
+  <p>
+    <mat-form-field class="full-width">
+      <mat-label>Ulica</mat-label>
+      <input matInput [formControl]="street" [(ngModel)]="formStreet" placeholder="Np. Białostocka 2" required>
+      <mat-error *ngIf="street.hasError('required')">Ulica wymagana!</mat-error>
+    </mat-form-field>
+  </p>
+  <table class="full-width" cellspacing="0"><tr>
+    <td><mat-form-field class="full-width">
+      <mat-label>Kod Pocztowy</mat-label>
+      <input matInput [formControl]="postcode" [(ngModel)]="formPostCode" #postalCode maxlength="5" placeholder="Np. 94105" type="number" required>
+      <mat-error *ngIf="postcode.hasError('required')">Kod pocztowy wymagany!!</mat-error>
+      <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
+    </mat-form-field></td>
+    <td style="padding-left: 50px;"><mat-form-field class="full-width">
+      <mat-label>Miejscowość</mat-label>
+      <input matInput [formControl]="city" [(ngModel)]="formCity" placeholder="Np. Białystok" required>
+      <mat-error *ngIf="city.hasError('required')">Miejscowość wymagana!!</mat-error>
+    </mat-form-field></tr>
+    <td><mat-form-field class="full-width">
+      <mat-label>Województwo</mat-label>
+      <input matInput [formControl]="region" [(ngModel)]="formRegion" placeholder="Np. Podlasie" required>
+      <mat-error *ngIf="city.hasError('required')">Województwo wymagane!!</mat-error>
+    </mat-form-field></td>
+  </table>
+  <button class="confirmButton" *ngIf="!name.hasError('required') && !surname.hasError('required') && !street.hasError('required')
+  && !postcode.hasError('required') && !city.hasError('required') && !region.hasError('required')" 
+  mat-button color="primary"
+  (click)='placeOrder()'>
+    Potwierdź
+  </button>
+</form>
+

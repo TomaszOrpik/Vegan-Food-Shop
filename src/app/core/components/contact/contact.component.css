@@ -10,4 +10,10 @@
 
 h1 {
     color: green;
+    font-weight: bold;
+}
+
+.confirmButton {
+    float: right;
+    border: 1px solid green;
 }

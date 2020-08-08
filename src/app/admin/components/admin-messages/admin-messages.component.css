@@ -1,0 +1,15 @@
+.mailBody:hover > .tooltiptext {
+    visibility: visible;
+}
+
+.tooltiptext {
+    visibility: hidden;
+    position: fixed;
+    margin-top: 20px;
+    border-radius: 5px;
+    max-width: 250px;
+    border: 2px solid darkgreen;
+    background-color: green;
+    color: white;
+    word-wrap: normal;
+}

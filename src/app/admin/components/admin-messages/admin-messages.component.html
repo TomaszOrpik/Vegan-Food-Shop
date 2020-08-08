@@ -1,0 +1,29 @@
+
+<div class="container defaultHeight" style="padding-top: 20px;">
+    <h1>Wiadomości</h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Data</th>
+        <th>E-mail</th>
+        <th>Temat</th>
+        <th>Opis</th>
+        <th></th>
+      </tr>
+    </thead> 
+    <tbody>
+      <tr *ngFor="let message of messages$ | async">
+        <td>{{ message.date }}</td>
+        <td>{{ message.mail }}</td>
+        <td> {{ message.subject }}</td>
+        <td class="mailBody">
+            {{ shortSentence(message.body) }}
+            <div class="tooltiptext">
+                <span>{{ message.body }}</span>
+            </div>
+        </td>
+        <td ><a [href]="'mailto:' + message.mail" class="btn button" style="color: white;">Wyślij Wiadomość</a></td>
+      </tr>
+    </tbody> 
+  </table>
+  </div>

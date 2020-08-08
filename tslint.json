@@ -9,11 +9,12 @@
     },
     "array-type": false,
     "arrow-return-shorthand": true,
-    "curly": true,
+    "curly": [true, "as-needed"],
     "deprecation": {
       "severity": "warning"
     },
     "component-class-suffix": true,
+    "prefer-for-of": false,
     "contextual-lifecycle": true,
     "directive-class-suffix": true,
     "directive-selector": [

@@ -3,6 +3,7 @@
   width: 80px;
   height: 80px;
   background-size: cover;
+  border-radius: 50px;
 }
 
 .card { 
@@ -11,15 +12,20 @@
 }
 
 h1 {
+  padding-top: 5px;
   color: green;
+  font-weight: bold;
 }
 
 .btn-primary {
   background-color: green !important;
   border-color: green !important;
+  color: white !important;
 }
 
 .btn-primary:hover {
   background-color: darkgreen !important;
   border-color: green !important;
 }
+
+

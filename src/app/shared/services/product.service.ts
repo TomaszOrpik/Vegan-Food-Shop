@@ -1,5 +1,8 @@
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Injectable } from '@angular/core';
+import { Product } from '../models/product';
+import * as firebase from 'firebase';
+import { databaseCopy } from '../models/databaseCopy';
 
 @Injectable()
 export class ProductService {
@@ -20,6 +23,12 @@ export class ProductService {
 
   update(productId, product) {
     return this.db.object('/products/' + productId).update(product);
+  }
+
+  updateAll() {
+    const ref = firebase.database().ref('products');
+    ref.remove();
+    this.db.object('/products/').set(databaseCopy);
   }
 
   delete(productId) {

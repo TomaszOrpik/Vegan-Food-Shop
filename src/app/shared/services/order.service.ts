@@ -5,12 +5,10 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class OrderService {
 
-  constructor(private db: AngularFireDatabase, private shoppingCartService: ShoppingCartService) { }
+  constructor(private db: AngularFireDatabase) { }
 
   async placeOrder(order) {
-    // tslint:disable-next-line: prefer-const
-    let result = await this.db.list('/orders').push(order);
-    this.shoppingCartService.clearCart();
+    const result = await this.db.list('/orders').push(order);
     return result;
   }
 

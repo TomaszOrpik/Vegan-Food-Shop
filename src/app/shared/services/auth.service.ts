@@ -23,6 +23,7 @@ export class AuthService {
     // tslint:disable-next-line: prefer-const
     let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || '/';
     localStorage.setItem('returnUrl', returnUrl);
+    localStorage.setItem('VFSTrack', 'true');
 
     this.afAuth.auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider());
   }

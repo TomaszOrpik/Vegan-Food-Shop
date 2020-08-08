@@ -14,15 +14,16 @@ export class ProductCardComponent {
 
   @Input() product: Product;
   @Input() showActions = true;
-  @Input() shoppingCart: ShoppingCart;
+  @Input() cart: ShoppingCart;
 
-  constructor(private cartService: ShoppingCartService, private router: Router) { }
+  constructor(private router: Router, private cartService: ShoppingCartService) { }
 
   addToCart() {
-    this.cartService.addToCart(this.product);
+    this.cart.addItem(this.product);
+    document.getElementById('cartCounter').innerHTML = this.cart.totalItemsCount().toString();
   }
 
   redirect() {
-    this.router.navigateByUrl('produkt/' + this.product.$key);
+    this.router.navigateByUrl('produkt/' + this.product.id);
   }
 }

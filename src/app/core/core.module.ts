@@ -26,7 +26,8 @@ import { ContactSuccessComponent } from './components/contact-success/contact-su
   ],
   exports: [
     BsNavbarComponent,
-    FooterComponent
+    FooterComponent,
+    ContactComponent
   ]
 })
 export class CoreModule { }

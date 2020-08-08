@@ -1,18 +1,18 @@
 <div class="card">
   <div class="card-body">
     <h4 class="card-title">Zamówienie</h4>
-    <p class="card-text">Masz {{ cart.totalItemsCount }} produktów w koszyku.</p>
+    <p class="card-text">Masz {{ cart.totalItemsCount() }} produktów w koszyku.</p>
     <ul class="list-group list-group-flush">
       <li *ngFor="let item of cart.items" class="list-group-item">
         {{ item.quantity }} x {{ item.title }}
         <div class="float-right">
-          {{ item.totalPrice | currency:'USD':true }}
+          {{ item.totalPrice | currency:'PLN ':'code' }}
         </div>
       </li>
       <li class="list-group-item font-weight-bold">
         Łącznie: 
         <div class="float-right">
-          {{ cart.totalPrice | currency:'PLN':true }}
+          {{ cart.totalPrice() | currency:'PLN ':'code' }}
         </div>
       </li>
     </ul>
