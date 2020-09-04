@@ -1,7 +1,6 @@
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
-// import { DataTableModule } from 'angular-4-data-table';
 import { CustomFormsModule } from 'ng2-validation';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -29,6 +28,7 @@ import { ShoppingCartService } from './services/shopping-cart.service';
 import { UserService } from './services/user.service';
 import { ContactService } from './services/contact.service';
 import { TrackUserService } from './services/track-user.service';
+import { PageActivityService } from './services/page-activity.service';
 
 @NgModule({
   imports: [
@@ -37,7 +37,6 @@ import { TrackUserService } from './services/track-user.service';
     ReactiveFormsModule,
     DeviceDetectorModule.forRoot(),
     CustomFormsModule,
-    // DataTableModule,
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     NgbModule,
@@ -61,7 +60,6 @@ import { TrackUserService } from './services/track-user.service';
     FormsModule,
     ReactiveFormsModule,
     CustomFormsModule,
-    // DataTableModule,
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     NgbModule,
@@ -82,7 +80,8 @@ import { TrackUserService } from './services/track-user.service';
     ShoppingCartService,
     OrderService,
     ContactService,
-    TrackUserService
+    TrackUserService,
+    PageActivityService
   ]
 })
 export class SharedModule { }

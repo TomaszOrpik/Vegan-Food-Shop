@@ -3,44 +3,45 @@
   <table class="full-width" cellspacing="0"><tr>
     <td><mat-form-field class="full-width">
       <mat-label>Imię</mat-label>
-      <input matInput [formControl]="name" [(ngModel)]="formName" required>
+      <input matInput [formControl]="name" [(ngModel)]="formName" id="nameInput" (keydown)="KeyDownHandler('nameInput')" required>
       <mat-error *ngIf="name.hasError('required')">Imię wymagane!</mat-error>
     </mat-form-field></td>
     <td style="padding-left: 50px;"><mat-form-field class="full-width">
       <mat-label>Nazwisko</mat-label>
-      <input matInput [formControl]="surname" [(ngModel)]="formSurname" required>
+      <input matInput [formControl]="surname" [(ngModel)]="formSurname" id="surnameInput" (keydown)="KeyDownHandler('surnameInput')" required>
       <mat-error *ngIf="surname.hasError('required')">Nazwisko wymagane!</mat-error>
     </mat-form-field></td>
   </tr></table>
   <p>
     <mat-form-field class="full-width">
       <mat-label>Ulica</mat-label>
-      <input matInput [formControl]="street" [(ngModel)]="formStreet" placeholder="Np. Białostocka 2" required>
+      <input matInput [formControl]="street" [(ngModel)]="formStreet" placeholder="Np. Białostocka 2" id="streetInput" (keydown)="KeyDownHandler('streetInput')" required>
       <mat-error *ngIf="street.hasError('required')">Ulica wymagana!</mat-error>
     </mat-form-field>
   </p>
   <table class="full-width" cellspacing="0"><tr>
     <td><mat-form-field class="full-width">
       <mat-label>Kod Pocztowy</mat-label>
-      <input matInput [formControl]="postcode" [(ngModel)]="formPostCode" #postalCode maxlength="5" placeholder="Np. 94105" type="number" required>
+      <input matInput [formControl]="postcode" [(ngModel)]="formPostCode" #postalCode maxlength="5" placeholder="Np. 94105" type="number" id="postcodeInput" (keydown)="KeyDownHandler('postcodeInput')" required>
       <mat-error *ngIf="postcode.hasError('required')">Kod pocztowy wymagany!!</mat-error>
       <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
     </mat-form-field></td>
     <td style="padding-left: 50px;"><mat-form-field class="full-width">
       <mat-label>Miejscowość</mat-label>
-      <input matInput [formControl]="city" [(ngModel)]="formCity" placeholder="Np. Białystok" required>
+      <input matInput [formControl]="city" [(ngModel)]="formCity" placeholder="Np. Białystok" id="cityInput" (keydown)="KeyDownHandler('cityInput')" required>
       <mat-error *ngIf="city.hasError('required')">Miejscowość wymagana!!</mat-error>
     </mat-form-field></tr>
     <td><mat-form-field class="full-width">
       <mat-label>Województwo</mat-label>
-      <input matInput [formControl]="region" [(ngModel)]="formRegion" placeholder="Np. Podlasie" required>
+      <input matInput [formControl]="region" [(ngModel)]="formRegion" placeholder="Np. Podlasie" id="regionInput" (keydown)="KeyDownHandler('regionInput')" required>
       <mat-error *ngIf="city.hasError('required')">Województwo wymagane!!</mat-error>
     </mat-form-field></td>
   </table>
   <button class="confirmButton" *ngIf="!name.hasError('required') && !surname.hasError('required') && !street.hasError('required')
   && !postcode.hasError('required') && !city.hasError('required') && !region.hasError('required')" 
   mat-button color="primary"
-  (click)='placeOrder()'>
+  id="placeOrderButton"
+  (click)="placeOrder('placeOrderButton')">
     Potwierdź
   </button>
 </form>

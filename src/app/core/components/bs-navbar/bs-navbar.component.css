@@ -20,3 +20,9 @@
   color: black !important;
   font-size: 15px;
 }
+
+.textWelcome {
+  cursor: pointer;
+  margin-top: 3px;
+  color: #f39c12;
+}

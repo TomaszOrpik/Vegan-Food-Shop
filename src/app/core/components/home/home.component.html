@@ -7,7 +7,7 @@
       <div class="container">
         <h1 class="masthead-heading mb-0">Jedz zdrowo i smacznie</h1>
         <h2 class="masthead-subheading mb-0">Zacznij zakupy już teraz!</h2>
-        <a routerLink="/sklep" class="mt-5">
+        <a routerLink="/sklep" class="mt-5" id="mainStartButton" (click)="ElClicked('mainStartButton')">
             <div class="customButton main">
                 <button>ROZPOCZNIJ</button>
             </div>
@@ -80,7 +80,7 @@
     <div class="bottomShop">
       <div class="container text-center customBottom">
           <h2 class="mb-0 bottomHeader">Zacznij zakupy już teraz!</h2>
-          <a routerLink="/sklep" (click)="scrollToTop()" class="bottomBtn">
+          <a routerLink="/sklep" (click)="scrollToTop()" class="bottomBtn" id="secondStartButton" (click)="ElClicked('secondStartButton')">
               <div class="customButton">
                   <button>WEJDŹ</button>
               </div>

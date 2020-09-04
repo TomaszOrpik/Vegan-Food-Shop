@@ -5,28 +5,29 @@
     <table class="full-width" cellspacing="0"><tr>
       <td><mat-form-field class="full-width">
         <mat-label>E-mail</mat-label>
-        <input matInput [formControl]="mail" [(ngModel)]="formMail" type="mail" placeholder="name@example.com" required>
+        <input matInput [formControl]="mail" [(ngModel)]="formMail" type="mail" placeholder="name@example.com" id="mailInput" (keydown)="collectClick('mailInput')" required>
         <mat-error *ngIf="mail.hasError('required')">Adres e-mail wymagany!</mat-error>
       </mat-form-field></td>
     </tr></table>
     <p>
       <mat-form-field class="full-width">
         <mat-label>Temat</mat-label>
-        <input matInput [formControl]="subject" [(ngModel)]="formSubject" placeholder="Pytanie" required>
+        <input matInput [formControl]="subject" [(ngModel)]="formSubject" placeholder="Pytanie" id="subjectInput" (keydown)="collectClick('subjectInput')" required>
         <mat-error *ngIf="subject.hasError('required')">Temat wymagany!</mat-error>
       </mat-form-field>
     </p>
     <table class="full-width" cellspacing="0"><tr>
       <td><mat-form-field class="full-width">
         <mat-label>Treść</mat-label>
-        <textarea matInput [formControl]="body" [(ngModel)]="formBody" placeholder="Zwracam się z pytaniem..." required></textarea>
+        <textarea matInput [formControl]="body" [(ngModel)]="formBody" placeholder="Zwracam się z pytaniem..." id="bodyInput" (keydown)="collectClick('bodyInput')" required></textarea>
         <mat-error *ngIf="body.hasError('required')">Treść maila wymagana!!</mat-error>
       </mat-form-field></td>
     </tr>
     </table>
     <button class="confirmButton" *ngIf="!mail.hasError('required') && !subject.hasError('required') && !body.hasError('required')"
     mat-button color="primary"
-    (click)='sendMessage()'
+    id="sendMessageButton"
+    (click)="sendMessage('sendMessageButton')"
     >
       Wyślij
     </button>

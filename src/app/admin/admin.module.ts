@@ -19,27 +19,42 @@ import { AdminMessagesComponent } from './components/admin-messages/admin-messag
       {
         path: 'admin/sklep/nowy',
         component: ProductFormComponent,
-        //canActivate: [AuthGuard, AdminAuthGuard]
+       canActivate: [
+          AuthGuard,
+          // AdminAuthGuard
+        ]
       },
       {
         path: 'admin/sklep/:id',
         component: ProductFormComponent,
-        //canActivate: [AuthGuard, AdminAuthGuard]
+        canActivate: [
+          AuthGuard,
+          // AdminAuthGuard
+        ]
       },
       {
         path: 'admin/sklep',
         component: AdminProductsComponent,
-        //canActivate: [AuthGuard, AdminAuthGuard]
+        canActivate: [
+          AuthGuard,
+          // AdminAuthGuard
+        ]
       },
       {
         path: 'admin/zamowienia',
         component: AdminOrdersComponent,
-        //canActivate: [AuthGuard, AdminAuthGuard]
+        canActivate: [
+          AuthGuard,
+          // AdminAuthGuard
+        ]
       },
       {
         path: 'admin/wiadomosci',
         component: AdminMessagesComponent,
-        //canActivate: [AuthGuard, AdminAuthGuard]
+        canActivate: [
+          AuthGuard,
+          // AdminAuthGuard
+        ]
       }
     ])
   ],

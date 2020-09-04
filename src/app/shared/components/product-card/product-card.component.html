@@ -1,7 +1,7 @@
 <div *ngIf="product.title" class="card">
   <div *ngIf="showActions then canClick; else cantClick"></div>
   <ng-template #canClick>
-    <a class="clickable" (click)="redirect()">
+    <a class="clickable" id="{{ product.title + '-detailsButton' }}" (click)="redirect(product.title + '-detailsButton')">
       <img *ngIf="product.imageUrl" class="card-img-top" [src]="product.imageUrl" alt="{{ product.title }}">
     </a>
   </ng-template>
@@ -11,13 +11,14 @@
   <div class="card-body">
     <h4 class="card-title">{{ product.title }}</h4>
     <p *ngIf="!showActions" class="card-text" style="border-bottom: 2px solid green;">{{ product.description }}</p>
-    <p class="card-text"> {{ product.price | currency:'PLN ':true }}</p>
+    <p class="card-text"> {{ product.price | currency:'PLN ':'code' }}</p>
   </div>
  <div *ngIf="showActions && cart" class="card-footer">
     <div *ngIf="cart.getQuantity(product) === 0; then zeroQuantity else updateQuantity"></div>
       <ng-template #zeroQuantity>
-        <button 
-        (click)="addToCart()"
+        <button
+        id="{{ product.title + '-addToCartMainButton'}}"
+        (click)="addToCart(product.title + '-addToCartMainButton')"
         class="btn btn-primary btn-block">Dodaj do koszyka</button>
       </ng-template>
       <ng-template #updateQuantity>

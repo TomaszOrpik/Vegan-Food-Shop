@@ -35,7 +35,6 @@ export class AuthService {
   get appUser$(): Observable<AppUser> {
     return this.user$
       .switchMap(user => {
-        // tslint:disable-next-line: curly
         if (user) return this.userService.get(user.uid);
 
         return Observable.of(null);

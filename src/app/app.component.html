@@ -1,11 +1,17 @@
 
-<div>
-    <!--*ngIf='userId === admin'-->
-    <dashboard id="dashboard"></dashboard>
+<ng-template *ngIf="sessionId === undefined; then loading else page"></ng-template>
+<ng-template #loading>
+    <img id="loading" src="../assets/9e917f152f70800d105c76ceb7ac2b36.gif"/>
+</ng-template>
+<ng-template #page>
     <div>
-        <bs-navbar></bs-navbar>
-        <router-outlet></router-outlet>
-        <app-footer [userId]="userId"></app-footer>
+        <dashboard id="dashboard" *ngIf='showDashboard'></dashboard>
+        <div>
+            <bs-navbar></bs-navbar>
+            <router-outlet></router-outlet>
+            <app-footer></app-footer>
+        </div>
     </div>
-</div>
+</ng-template>
+
 

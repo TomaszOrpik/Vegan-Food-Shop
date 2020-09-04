@@ -5,6 +5,7 @@ import { ProductService } from '../../../shared/services/product.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AngularFireList } from 'angularfire2/database';
 import { ShoppingCart } from 'src/app/shared/models/shopping-cart';
+import { TrackUserService } from 'src/app/shared/services/track-user.service';
 
 @Component({
   selector: 'app-products',
@@ -20,10 +21,13 @@ export class ProductsComponent implements OnInit, OnDestroy  {
   contactVisible = false;
   screenSize: number;
 
+  count = 0;
+
   constructor(
     private route: ActivatedRoute,
     private productService: ProductService,
-    private shoppingCartService: ShoppingCartService
+    private shoppingCartService: ShoppingCartService,
+    private trackUser: TrackUserService
   ) {
     this.getAll = this.productService.getAll();
     this.screenSize = window.innerWidth;
@@ -41,6 +45,8 @@ export class ProductsComponent implements OnInit, OnDestroy  {
       this.contactVisible = params.kontakt;
     });
     this.populateProducts();
+
+    setInterval(() => this.count = this.increaseCount(this.count), 1000);
   }
 
   private populateProducts() {
@@ -63,7 +69,14 @@ export class ProductsComponent implements OnInit, OnDestroy  {
         this.products;
       }
 
+  increaseCount(count): number {
+    return count + 1;
+  }
+
   ngOnDestroy() {
     this.shoppingCartService.saveCart(this.cart);
+    const sessionId = localStorage.getItem('sessionId');
+    if (sessionId !== 'Admin')
+      this.trackUser.postPage(sessionId, 'Sklep', this.count);
   }
 }

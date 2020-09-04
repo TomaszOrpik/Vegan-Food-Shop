@@ -15,10 +15,18 @@
         <div class="product-stock">Stan: <span class="text-green">W Magazynie</span></div>
         <hr>
         <div class="btn-group cart">
-          <button type="button" (click)="addToCart()" class="btn btn-success">
+          <button 
+            id="{{ product.title + '-detailsPageAddtoCartButton' }}"
+            type="button" 
+            (click)="addToCart(product.title + '-detailsPageAddtoCartButton')" 
+            class="btn btn-success">
             Dodaj do koszyka
           </button>
-          <button type="button" (click)="removeFromCart()" class="btn btn-danger margin-left">
+          <button 
+            id="{{ product.title + '-detailsPageRemovefromCartButton' }}"
+            type="button" 
+            (click)="removeFromCart(product.title + '-detailsPageRemovefromCartButton')" 
+            class="btn btn-danger margin-left">
             Usuń z koszyka
           </button>
         </div>

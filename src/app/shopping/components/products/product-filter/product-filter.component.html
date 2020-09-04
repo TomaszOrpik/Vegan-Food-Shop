@@ -1,12 +1,16 @@
 <div>
   <div class="list-group">
       <a
+        id="all-Category"
         class="list-group-item list-group-item-action"
         [class.active]="!category"
         routerLink="/sklep"
+        (click)="categoryClicked('all-Category')"
         >Wszystkie Kategorie</a>
       <a 
-        *ngFor="let c of categories$" 
+        *ngFor="let c of categories$"
+        id="{{ c + '-Category' }}"
+        (click)="categoryClicked(c+'-Category')"
         routerLink="/sklep"
         [queryParams]="{ category: c }"
         class="list-group-item list-group-item-action"

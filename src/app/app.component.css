@@ -9,5 +9,10 @@
     position: fixed;
     left: 0;
     top: 0;
-    background-color: slategray;
+    background-color: darkgreen;
+}
+
+#loading {
+   left: 30%;
+   position: fixed;
 }

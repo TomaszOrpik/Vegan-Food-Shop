@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { DeviceDetectorService } from 'ngx-device-detector';
 import { DatePipe } from '@angular/common';
-import { environment } from 'src/environments/environment';
 import { User } from '../models/user';
-import { UserService } from './user.service';
-import { userInfo } from 'os';
 
 @Injectable()
 export class TrackUserService {
+
+  sessionId: string;
+  apiSource = 'https://desolate-harbor-68661.herokuapp.com';
 
   constructor(
     private http: HttpClient,
@@ -52,18 +52,18 @@ export class TrackUserService {
           this.postUser(user).subscribe({
             next: (data: any) => {
               console.log(data);
+              this.sessionId = data;
             },
             error: error => console.error('There was error', error)
           });
         });
     });
-
      return userId;
    }
-   // 4x post to create to pages to cartItems to buyedItems
+
    private postUser(user: User)
-{
-     return this.http.post('http://localhost:3000/sessions', {
+  {
+     return this.http.post(this.apiSource + '/sessions', {
       sessionId : user.userId,
       userIp : user.userIp,
       visitDate : user.dateOfVisit,
@@ -74,19 +74,68 @@ export class TrackUserService {
       });
    }
 
-   public postPage()
-   {
-
+   public removeSession(sessionId: string) {
+      return this.http.delete(`${this.apiSource}/sessions/${sessionId}`);
    }
 
-   public postCartItems()
-   {
-
+   public postPage(sessionId: string, name: string, timeOn: number) {
+      return this.http.put(`${this.apiSource}/sessions_pages/${sessionId}`, {
+        name,
+        timeOn
+      }).subscribe(res => console.log(res));
    }
 
-   public postBuyedItems()
-   {
+   public postCartItems(sessionId: string, itemName: string, itemAction: string) {
+    return this.http.put(`${this.apiSource}/sessions_cartItems/${sessionId}`, {
+      itemName,
+      itemAction
+    }).subscribe(res => console.log(res));
+   }
 
+   public postBuyedItems(sessionId: string, itemName: string, itemQuantity: number) {
+    return this.http.put(`${this.apiSource}/sessions_buyedItems/${sessionId}`, {
+      itemName,
+      itemQuantity
+    }).subscribe(res => console.log(res));
+   }
+
+   public postSessionScrap(sessionId: string,
+                           mouseX: number,
+                           mouseY: number,
+                           clickedItemId: string,
+                           InputId: string,
+                           InputKey: string) {
+    //additional post when item is clicked with id of him and user make input
+    const windowWidth = window.innerWidth;
+    const windowHeight = window.innerHeight;
+    const path = window.location.pathname;
+    const query = window.location.search;
+    const currentPage = path + query;
+    const scrollTopPosition = window.scrollY;
+
+    return this.http.put(`${this.apiSource}/sessions_scrap/${sessionId}`, {
+      windowWidth,
+      windowHeight,
+      currentPage,
+      scrollTopPosition,
+      mouseX,
+      mouseY,
+      clickedItemId,
+      InputId,
+      InputKey
+    }).subscribe(res => console.log(res));
+   }
+
+   public updateDidLogged(sessionId: string) {
+    return this.http.patch(`${this.apiSource}/sessions_logged/${sessionId}`, {
+      didLogged: true
+    }).subscribe(res => console.log(res));
+   }
+
+   public updateDidContacted(sessionId: string) {
+    return this.http.patch(this.apiSource + '/sessions_contacted/' + sessionId, {
+      didContacted: true
+    }).subscribe(res => console.log(res));
    }
 
    private getCountry(ip: string) {

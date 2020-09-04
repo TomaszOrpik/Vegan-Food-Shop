@@ -1,7 +1,8 @@
 <div class="row no-gutters">
   <div class="col-2">
     <button *ngIf="quantityActions"
-      (click)="removeFromCart()"
+      id="{{ product.title + '-removeFromCartButton' }}"
+      (click)="removeFromCart(product.title + '-removeFromCartButton')"
       class="btn btn-primary btn-block">-</button> 
   </div>
   <div class="col text-center quantity">
@@ -9,7 +10,8 @@
   </div>
   <div class="col-2">
     <button *ngIf="quantityActions"
-      (click)="addToCart()"
+      id="{{ product.title + '-addToCartButton' }}"
+      (click)="addToCart(product.title + '-addToCartButton')"
       class="btn btn-primary btn-block">+</button> 
   </div>
 </div>

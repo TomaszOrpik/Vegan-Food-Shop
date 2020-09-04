@@ -11,13 +11,13 @@ mat-icon {
 }
 
 .nav-link:hover, .nav-link:active {
-    color: darkgreen !important;
+    color: #f39c12 !important;
   }
 
   .nav-link .tooltiptext {
     visibility: hidden;
     width: 120px;
-    background-color: green;
+    background-color: #f39c12;
     color: #fff;
     text-align: center;
     border-radius: 6px;
