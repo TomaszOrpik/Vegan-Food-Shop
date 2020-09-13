@@ -5,6 +5,7 @@ import { Component, HostListener } from '@angular/core';
 import { TrackUserService } from './shared/services/track-user.service';
 import { ShoppingCartService } from './shared/services/shopping-cart.service';
 import { AdminAuthGuard } from './admin/services/admin-auth-guard.service';
+import { GetUsersDataService } from './shared/services/get-users-data.service';
 
 @Component({
   selector: 'app-root',
@@ -17,6 +18,7 @@ export class AppComponent {
   currentDate = Date.now();
   isLogging = false;
   showDashboard = false;
+  isAdmin = false;
 
   constructor(
     shoppingCartService: ShoppingCartService,
@@ -30,7 +32,7 @@ export class AppComponent {
     if (localStorage.getItem('isLogging') === 'true')
       this.isLogging = true;
 
-    if (this.isLogging === false)
+    if (this.isLogging === false && localStorage.getItem('isAdmin') === 'false' && localStorage.getItem('isLoggingOut') !== 'true')
         this.trackUser.initTrackUser();
 
 
@@ -39,27 +41,27 @@ export class AppComponent {
           this.sessionId = localStorage.getItem('sessionId');
           localStorage.setItem('isLogging', 'false');
           this.isLogging = false;
-        } else {
-          this.sessionId = this.trackUser.sessionId;
-          localStorage.setItem('sessionId', this.trackUser.sessionId);
-        }
-    }, 2000);
-
-    setTimeout(() => {
-      const ssId = localStorage.getItem('sessionId');
-      if (ssId === 'Admin')
-        this.showDashboard = true;
-    }, 3500);
+        } else
+          if (localStorage.getItem('isAdmin') === 'false') {
+            this.sessionId = this.trackUser.sessionId;
+            localStorage.setItem('sessionId', this.trackUser.sessionId);
+          }
+    }, 3000);
 
     auth.user$.subscribe(user => {
-      if (!user) return;
+      if (!user) {
+        localStorage.setItem('isAdmin', 'false');
+        return;
+      }
 
       userService.save(user);
       const uid = user.uid;
       userService.get(uid).valueChanges().subscribe((newUser: typeof user) => {
         if (newUser.isAdmin) {
+          localStorage.setItem('isAdmin', 'true');
           const sessionIdDub = localStorage.getItem('sessionId');
           localStorage.setItem('sessionId', 'Admin');
+          this.showDashboard = true;
           this.trackUser.removeSession(sessionIdDub);
         } else this.trackUser.updateDidLogged(sessionId);
       });

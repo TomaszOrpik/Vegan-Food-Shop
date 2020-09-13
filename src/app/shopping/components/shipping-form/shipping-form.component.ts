@@ -77,6 +77,9 @@ export class ShippingFormComponent implements OnInit, OnDestroy {
       this.formCity,
       this.formRegion
     );
+
+    if (this.userId === null || this.userId === undefined) this.userId = '-' + Math.random().toString(36).substr(2, 21);
+
     this.pageActivity.ElClicked(elementId);
     const order = new Order(this.userId, shipping, this.cart);
     const result = await this.orderService.placeOrder(order);

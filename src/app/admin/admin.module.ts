@@ -10,6 +10,8 @@ import { CommonModule } from '@angular/common';
 import { AuthGuard } from './../shared/services/auth-guard.service';
 import { DashnoardComponent } from './components/dashnoard/dashnoard.component';
 import { AdminMessagesComponent } from './components/admin-messages/admin-messages.component';
+import { PageActivityComponent } from './components/page-activity/page-activity.component';
+import { UsersListComponent } from './components/users-list/users-list.component';
 
 
 @NgModule({
@@ -55,6 +57,22 @@ import { AdminMessagesComponent } from './components/admin-messages/admin-messag
           AuthGuard,
           // AdminAuthGuard
         ]
+      },
+      {
+        path: 'admin/globalne',
+        component: PageActivityComponent,
+        canActivate: [
+          AuthGuard,
+          // AdminAuthGuard
+        ]
+      },
+      {
+        path: 'admin/uzytkownicy',
+        component: UsersListComponent,
+        canActivate: [
+          AuthGuard,
+          // AdminAuthGuard
+        ]
       }
     ])
   ],
@@ -64,6 +82,8 @@ import { AdminMessagesComponent } from './components/admin-messages/admin-messag
     AdminOrdersComponent,
     DashnoardComponent,
     AdminMessagesComponent,
+    PageActivityComponent,
+    UsersListComponent,
   ],
   exports: [
     DashnoardComponent

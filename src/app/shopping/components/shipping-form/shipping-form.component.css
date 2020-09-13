@@ -11,3 +11,7 @@
 .confirmButton {
     border: 2px solid green;
 }
+
+app-footer {
+    position: relative;
+}

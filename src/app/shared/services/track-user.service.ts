@@ -105,7 +105,6 @@ export class TrackUserService {
                            clickedItemId: string,
                            InputId: string,
                            InputKey: string) {
-    //additional post when item is clicked with id of him and user make input
     const windowWidth = window.innerWidth;
     const windowHeight = window.innerHeight;
     const path = window.location.pathname;

@@ -14,7 +14,6 @@ export class AdminMessagesComponent {
 
   constructor(private contactService: ContactService) {
     this.messages$ = this.contactService.getMessages() as Observable<any[]>;
-    console.log(this.messages$);
   }
 
   shortSentence(text: string) { return `${text.substr(0, 15)}...`; }

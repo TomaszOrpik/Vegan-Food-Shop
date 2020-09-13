@@ -6,9 +6,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { DeviceDetectorModule } from 'ngx-device-detector';
+
 import {MatPaginatorModule} from '@angular/material/paginator';
-
-
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -16,6 +15,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTableModule } from '@angular/material/table';
 import { MatSelectModule } from '@angular/material/select';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatListModule } from '@angular/material/list';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { ProductQuantityComponent } from './components/product-quantity/product-quantity.component';
@@ -47,7 +49,10 @@ import { PageActivityService } from './services/page-activity.service';
     MatTooltipModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSelectModule
+    MatSelectModule,
+    MatCheckboxModule,
+    MatListModule,
+    MatExpansionModule
     ],
   declarations: [
     ProductCardComponent,
@@ -69,7 +74,10 @@ import { PageActivityService } from './services/page-activity.service';
     MatButtonModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSelectModule
+    MatSelectModule,
+    MatCheckboxModule,
+    MatListModule,
+    MatExpansionModule
   ],
   providers: [
     AuthService,

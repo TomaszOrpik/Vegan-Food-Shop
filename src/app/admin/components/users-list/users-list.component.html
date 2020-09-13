@@ -1,0 +1,10 @@
+<div class="container defaultHeight" style="padding-top: 20px">
+    <mat-accordion>
+        <mat-expansion-panel *ngFor="let user of usersList">
+            <mat-expansion-panel-header>
+                <mat-panel-title>{{user}}</mat-panel-title>
+            </mat-expansion-panel-header>
+            <app-page-activity user={{user}}></app-page-activity>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>

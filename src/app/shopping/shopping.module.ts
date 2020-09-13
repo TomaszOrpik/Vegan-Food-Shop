@@ -22,7 +22,7 @@ import { CoreModule } from '../core/core.module';
       { path: 'sklep', component: ProductsComponent },
       { path: 'koszyk', component: ShoppingCartComponent },
       { path: 'kasa', component: CheckOutComponent },
-      { path: 'podsumowanie/:id', component: OrderSuccessComponent, canActivate: [AuthGuard] },
+      { path: 'podsumowanie/:id', component: OrderSuccessComponent },
       { path: 'produkt/:id', component: ProductComponent },
       { path: 'moje/zamowienia', component: MyOrdersComponent, canActivate: [AuthGuard] }
     ]),

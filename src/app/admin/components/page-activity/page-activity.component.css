@@ -1,0 +1,84 @@
+.simpleText {
+    color: black !important;
+}
+.avDataDiv {
+    font-weight: bolder !important;
+    color: green;
+    border-bottom: 2px solid green;
+}
+.dataDiv {
+    float: left;
+    padding: 10px;
+    width: 35%;
+    height: 75vh;
+    font-size: 16px;
+}
+.allData {
+    border-right: 2px solid green;
+}
+.chartPage {
+    border-right: 2px solid green;
+    float: left;
+    width: 44%;
+    height: 80vh;
+    position: relative;
+    overflow-Y: visible;
+}
+.cartItemsList {
+    overflow-y: scroll;
+    height: 50%;
+}
+.cartItem {
+    border-bottom: 2px solid lightgray;
+    width: 90%;
+}
+.listSessions {
+    float: right;
+    width: 20%;
+    height: 75vh;
+    overflow-Y: scroll;
+}
+.globalDataText {
+    display: inline-block;
+    margin-bottom: 20px;
+    color: green;
+}
+#pagesContainer {
+    width: 80%;
+    height: 39%;
+}
+#buyedItemContainer {
+    position: absolute;
+    top: 40vh;
+    width: 80%;
+}
+
+app-page-activity .mat-pseudo-checkbox {
+    display: none;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 20px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 10px;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: green; 
+    border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: darkgreen; 
+  }
+
+@media only screen and (min-width: 600px) {
+    /* here to display all boxes one under another on mobile*/
+}
