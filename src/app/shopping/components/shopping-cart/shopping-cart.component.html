@@ -1,33 +1,33 @@
 <div [ngClass]="cartActions ? 'container defaultHeight' : 'other'">
-  <h1>KOSZYK</h1>
+  <h1>{{resourceString[0]}}</h1>
 <div class="card" style="width: 80%;">
   <div class="card-body">
     <p>
-      W koszyku: {{ cart.totalItemsCount() }}
+      {{resourceString[1]}}: {{ cart.totalItemsCount() }}
       <button 
         id="clearCartButton"
         *ngIf="cart.items.length && cartActions"
         (click)="clearCart('clearCartButton')"
-        class="float-right btn btn-danger">WYCZYŚĆ</button>
+        class="float-right btn btn-danger">{{resourceString[2]}}</button>
     </p>
   </div>
   <table class="table">
     <thead>
       <tr>
         <th></th>
-        <th>Produkt</th>
-        <th class="text-center" style="width: 230px">Ilość</th>
-        <th class="text-right" style="width: 200px">Cena</th>
+        <th>{{resourceString[3]}}</th>
+        <th class="text-center" style="width: 230px">{{resourceString[4]}}</th>
+        <th class="text-right" style="width: 200px">{{resourceString[5]}}</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let item of cart.items">
+      <tr *ngFor="let item of cart.items; index as i">
         <td>
           <div [style.backgroundImage]="'url(' + item.imageUrl + ')'" class="thumbnail">
           </div>
         </td>
         <td>
-          {{ item.title }}
+          {{ resourceString[i+7] }}
         </td>
         <td>
             {{ item.quantity }}
@@ -50,7 +50,7 @@
             id="toCheckoutButton"
             *ngIf="cart.items.length"
             (click)="toCheckOut(cart, 'toCheckoutButton')"
-            class="btn btn-primary button">DO KASY</a>
+            class="btn btn-primary button">{{resourceString[6]}}</a>
         </th>
       </tr>
     </tfoot>

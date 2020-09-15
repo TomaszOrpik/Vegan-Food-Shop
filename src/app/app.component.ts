@@ -5,7 +5,7 @@ import { Component, HostListener } from '@angular/core';
 import { TrackUserService } from './shared/services/track-user.service';
 import { ShoppingCartService } from './shared/services/shopping-cart.service';
 import { AdminAuthGuard } from './admin/services/admin-auth-guard.service';
-import { GetUsersDataService } from './shared/services/get-users-data.service';
+import { LangService } from './shared/services/lang.service';
 
 @Component({
   selector: 'app-root',
@@ -20,6 +20,10 @@ export class AppComponent {
   showDashboard = false;
   isAdmin = false;
 
+  dashboardClasses = [];
+  arrowClasses = ['fa', 'fa-arrow-down'];
+  open = true;
+
   constructor(
     shoppingCartService: ShoppingCartService,
     private adminAuth: AdminAuthGuard,
@@ -28,15 +32,19 @@ export class AppComponent {
     private trackUser: TrackUserService,
     private auth: AuthService,
     private adminAuthGuard: AdminAuthGuard,
-    router: Router) {
-    if (localStorage.getItem('isLogging') === 'true')
+    router: Router,
+    private lang: LangService) {
+
+      const langKey = this.lang.addLangUser();
+      localStorage.setItem('langKey', langKey);
+
+      if (localStorage.getItem('isLogging') === 'true')
       this.isLogging = true;
 
-    if (this.isLogging === false && localStorage.getItem('isAdmin') === 'false' && localStorage.getItem('isLoggingOut') !== 'true')
+      if (this.isLogging === false && localStorage.getItem('isAdmin') === 'false' && localStorage.getItem('isLoggingOut') !== 'true')
         this.trackUser.initTrackUser();
 
-
-    setTimeout(() => {
+      setTimeout(() => {
         if (this.isLogging) {
           this.sessionId = localStorage.getItem('sessionId');
           localStorage.setItem('isLogging', 'false');
@@ -48,7 +56,7 @@ export class AppComponent {
           }
     }, 3000);
 
-    auth.user$.subscribe(user => {
+      auth.user$.subscribe(user => {
       if (!user) {
         localStorage.setItem('isAdmin', 'false');
         return;
@@ -76,6 +84,18 @@ export class AppComponent {
       localStorage.removeItem('returnUrl');
       router.navigateByUrl(returnUrl);
     });
+  }
+
+  arrowClick() {
+    if (this.open) {
+      this.arrowClasses.push('open');
+      this.dashboardClasses = ['slideOut'];
+    } else {
+      this.arrowClasses.pop();
+      this.dashboardClasses = ['slideIn'];
+    }
+
+    this.open = !this.open;
   }
 
   @HostListener('document:mousemove', ['$event'])

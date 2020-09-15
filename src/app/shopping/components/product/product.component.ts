@@ -1,11 +1,13 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { ProductService } from '../../../shared/services/product.service';
 import { Product } from '../../../shared/models/product';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { ShoppingCartService } from '../../../shared/services/shopping-cart.service';
 import { ShoppingCart } from 'src/app/shared/models/shopping-cart';
 import { TrackUserService } from 'src/app/shared/services/track-user.service';
 import { PageActivityService } from 'src/app/shared/services/page-activity.service';
+import { Subscription } from 'rxjs';
+import { LangService } from 'src/app/shared/services/lang.service';
 
 @Component({
   selector: 'app-product',
@@ -18,6 +20,11 @@ export class ProductComponent implements OnInit, OnDestroy {
   product;
   cart: ShoppingCart;
 
+  resourceString = ['Nazwa', 'Cena', 'Stan', 'W Magazynie', 'Dodaj do koszyka', 'Usuń z koszyka', 'OPIS', '', ''];
+  subContainer: Subscription;
+  subListContainer: Subscription;
+  translationResult;
+
   count = 0;
 
   constructor(
@@ -25,7 +32,8 @@ export class ProductComponent implements OnInit, OnDestroy {
     private cartService: ShoppingCartService,
     private route: ActivatedRoute,
     private trackUser: TrackUserService,
-    private pageActivity: PageActivityService
+    private pageActivity: PageActivityService,
+    private lang: LangService
   ) { }
 
   ngOnInit() {
@@ -34,11 +42,16 @@ export class ProductComponent implements OnInit, OnDestroy {
     this.cart = this.cartService.loadCart();
 
     this.productService.get(this.id).valueChanges().subscribe(
-      product => {
+      (product: Product) => {
         this.product = product;
         this.product.id = this.id;
       }
     );
+    setTimeout(() => {
+      this.resourceString[7] = this.product.title;
+      this.resourceString[8] = this.product.description;
+      this.lang.getTranslations(this.resourceString);
+    }, 100);
     setInterval(() => this.count = this.increaseCount(this.count), 1000);
   }
 
@@ -55,7 +68,6 @@ export class ProductComponent implements OnInit, OnDestroy {
   removeFromCart(elementId: string) {
     this.pageActivity.ElClicked(elementId);
     this.cart.removeItem(this.product);
-    console.log(this.cart.totalItemsCount());
     document.getElementById('cartCounter').innerHTML = this.cart.totalItemsCount().toString();
     this.cartService.saveCart(this.cart);
     const sessionId = localStorage.getItem('sessionId');
@@ -68,6 +80,7 @@ export class ProductComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
+    this.lang.unSubAll();
     const sessionId = localStorage.getItem('sessionId');
     if (sessionId !== 'Admin')
       this.trackUser.postPage(sessionId, 'Produkt: ' + this.product.title, this.count);

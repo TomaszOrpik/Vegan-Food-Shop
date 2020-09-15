@@ -2,31 +2,37 @@
     <div class="iconMail">
         <a class="nav-link" routerLink="/admin/wiadomosci">
             <mat-icon>mail</mat-icon>
-            <span class="tooltiptext">Sprawdź wiadomości</span>
+            <span class="tooltiptext">{{resourceString[0]}}</span>
         </a>
     </div>
     <div class="iconBuyed">
         <a class="nav-link" routerLink="/admin/zamowienia">
             <mat-icon>add_shopping_cart</mat-icon>
-            <span class="tooltiptext link2">Zobacz kupione towary</span>
+            <span class="tooltiptext link2">{{resourceString[1]}}</span>
         </a>
     </div>
     <div class="iconNewOrder">
         <a class="nav-link" routerLink="/admin/sklep">
             <mat-icon>add_box</mat-icon>
-            <span class="tooltiptext link3">Dodaj towar</span>
+            <span class="tooltiptext link3">{{resourceString[2]}}</span>
+        </a>
+    </div>
+    <div class="iconTranslation">
+        <a class="nav-link" routerLink="/admin/tlumaczenie">
+            <mat-icon>translate</mat-icon>
+            <span class='tooltiptext link4'>{{resourceString[3]}}</span>
         </a>
     </div>
     <div class="global">
         <a class="nav-link" routerLink="/admin/globalne">
             <mat-icon>public</mat-icon>
-            <span class="tooltiptext link4">Dane globalne</span>
+            <span class="tooltiptext link5">{{resourceString[4]}}</span>
         </a>
     </div>
     <div class="users">
         <a class="nav-link" routerLink="/admin/uzytkownicy">
             <mat-icon>account_box</mat-icon>
-            <span class="tooltiptext link5">Dane użytkowników</span>
+            <span class="tooltiptext link6">{{resourceString[5]}}</span>
         </a>
     </div>
 

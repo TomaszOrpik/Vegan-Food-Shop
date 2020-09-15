@@ -1,14 +1,14 @@
 
 <div class="container defaultHeight" style="padding-top: 20px;">
-  <h1>Zamówienia</h1>
+  <h1>{{resourceString[0]}}</h1>
 <table class="table">
   <thead>
     <tr>
-      <th>Klient</th>
-      <th>Data</th>
-      <th>Przedmioty</th>
-      <th>Ilość</th>
-      <th>Cena</th>
+      <th>{{resourceString[1]}}</th>
+      <th>{{resourceString[2]}}</th>
+      <th>{{resourceString[3]}}</th>
+      <th>{{resourceString[4]}}</th>
+      <th>{{resourceString[5]}}</th>
     </tr>
   </thead> 
   <tbody>
@@ -16,7 +16,7 @@
       <td class="clickableItem">{{ order.shipping.name }}</td>
       <td class="clickableItem">{{ order.datePlaced }}</td>
       <td class="clickableItem">
-        <span *ngFor="let item of order.items">{{item.product.title}}, </span>
+        <span *ngFor="let item of order.items">{{ item.product.title }}, </span>
       </td>
       <td class="clickableItem">{{ totalQuantity(order) }}</td>
       <td class="clickableItem">{{ totalPrice(order) }}</td>

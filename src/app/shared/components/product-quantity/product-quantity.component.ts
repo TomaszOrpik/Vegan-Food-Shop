@@ -1,9 +1,11 @@
 import { ShoppingCartService } from '../../services/shopping-cart.service';
 import { Product } from '../../models/product';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { ShoppingCart } from '../../models/shopping-cart';
 import { TrackUserService } from '../../services/track-user.service';
 import { PageActivityService } from '../../services/page-activity.service';
+import { Subscription } from 'rxjs';
+import { LangService } from '../../services/lang.service';
 
 @Component({
   // tslint:disable-next-line: component-selector
@@ -11,13 +13,27 @@ import { PageActivityService } from '../../services/page-activity.service';
   templateUrl: './product-quantity.component.html',
   styleUrls: ['./product-quantity.component.css']
 })
-export class ProductQuantityComponent  {
+export class ProductQuantityComponent implements OnInit, OnDestroy  {
 
   @Input() product: Product;
   @Input() shoppingCart: ShoppingCart;
   @Input() quantityActions = true;
 
-  constructor(private trackUser: TrackUserService, private pageActivity: PageActivityService) { }
+  subContainer: Subscription;
+  subListContainer: Subscription;
+  resourceString = ['w koszyku'];
+
+  constructor(private trackUser: TrackUserService,
+              private pageActivity: PageActivityService,
+              private lang: LangService) { }
+
+  ngOnInit() {
+    this.lang.getTranslations(this.resourceString);
+  }
+
+  ngOnDestroy() {
+    this.lang.unSubAll();
+  }
 
   addToCart(elementId: string) {
     this.pageActivity.ElClicked(elementId);

@@ -9,7 +9,7 @@
     <img *ngIf="product.imageUrl" class="card-img-top" [src]="product.imageUrl" alt="{{ product.title }}" style="border-bottom: 2px solid green;">
   </ng-template>
   <div class="card-body">
-    <h4 class="card-title">{{ product.title }}</h4>
+    <h4 class="card-title">{{ resourceString[1] }}</h4>
     <p *ngIf="!showActions" class="card-text" style="border-bottom: 2px solid green;">{{ product.description }}</p>
     <p class="card-text"> {{ product.price | currency:'PLN ':'code' }}</p>
   </div>
@@ -19,7 +19,7 @@
         <button
         id="{{ product.title + '-addToCartMainButton'}}"
         (click)="addToCart(product.title + '-addToCartMainButton')"
-        class="btn btn-primary btn-block">Dodaj do koszyka</button>
+        class="btn btn-primary btn-block">{{ resourceString[0] }}</button>
       </ng-template>
       <ng-template #updateQuantity>
         <product-quantity [product]="product" [shoppingCart]="cart">

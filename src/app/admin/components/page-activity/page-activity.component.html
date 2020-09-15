@@ -1,48 +1,48 @@
 
 <div class="container defaultHeight" style="padding-top: 20px;">
-    <!-- jeżeli jest kliknięte dane average to wyświetla się to jeżeli jest wybrana sesja, to ten poniżej -->
+    <button class="btn exportBtn">{{resourceString[0]}}</button>
+    <button class="btn exportBtn">{{resourceString[1]}}</button>
         <div class="dataDiv allData" *ngIf='isAverage; else session'>
-            <span class="globalDataText" *ngIf='isUser'>Ip Użytkownika:</span>&nbsp;<span class="globalDataText simpleText">{{averageData.userIp}}</span><br/>
-            <span class="globalDataText">Najpopularniejsze Urządzenie:</span>&nbsp;<span class="globalDataText simpleText">{{averageData.mostUsedDevice}}</span><br/>
-            <span class="globalDataText">Najpopularniejsza Przeglądarka:</span>&nbsp;<span class="globalDataText simpleText">{{averageData.mostUsedBrowser}}</span><br/>
-            <span class="globalDataText">Najpopularniejsza Lokacja:</span>&nbsp;<span class="globalDataText simpleText">{{averageData.mostPopularLocation}}</span><br/>
-            <span class="globalDataText">Najpopularniejsze Polecenie:</span>&nbsp;<span class="globalDataText simpleText">{{averageData.mostPopularReffer}}</span><br/>
-            <span class="globalDataText">Średni Czas na Stronie:</span>&nbsp;<span class="globalDataText simpleText">{{averageData.averageTimeOnPages.toString()}}</span><br/>
-            <span class="globalDataText">Średnia Operacja na Koszyku:</span>&nbsp;<span class="globalDataText simpleText">{{averageData.avCartAction}}</span><br/>
-            <span class="globalDataText">Średnio Ilość Kupionych Przedmiotów:</span>&nbsp;<span class="globalDataText simpleText">{{averageData.avItemBuy.toString()}}</span><br/>
+            <span class="globalDataText" *ngIf='isUser'>{{resourceString[2]}}:</span>&nbsp;<span class="globalDataText simpleText">{{averageData.userIp}}</span><br/>
+            <span class="globalDataText">{{resourceString[3]}}:</span>&nbsp;<span class="globalDataText simpleText">{{resourceString[24]}}</span><br/>
+            <span class="globalDataText">{{resourceString[4]}}:</span>&nbsp;<span class="globalDataText simpleText">{{averageData.mostUsedBrowser}}</span><br/>
+            <span class="globalDataText">{{resourceString[5]}}:</span>&nbsp;<span class="globalDataText simpleText">{{resourceString[25]}}</span><br/>
+            <span class="globalDataText">{{resourceString[6]}}:</span>&nbsp;<span class="globalDataText simpleText">{{averageData.mostPopularReffer}}</span><br/>
+            <span class="globalDataText">{{resourceString[7]}}:</span>&nbsp;<span class="globalDataText simpleText">{{averageData.averageTimeOnPages.toString()}}</span><br/>
+            <span class="globalDataText">{{resourceString[8]}}:</span>&nbsp;<span class="globalDataText simpleText">{{resourceString[26]}}</span><br/>
+            <span class="globalDataText">{{resourceString[9]}}:</span>&nbsp;<span class="globalDataText simpleText">{{averageData.avItemBuy.toString()}}</span><br/>
             <div><mat-checkbox
                 [checked]="averageData.mostlyLogged"
                 [disabled]="true"
                 labelPosition="after"
-                > Przeważnie Zalogowany</mat-checkbox></div>
+                > {{resourceString[23]}}</mat-checkbox></div>
         </div>
     <ng-template #session>
         <div class="dataDiv charts">
-            <span class="globalDataText">Id Użytkownika:</span>&nbsp;<span class="globalDataText simpleText">{{acvtiveSession.userId}}</span><br/>
-            <span class="globalDataText">Id Sesji:</span>&nbsp;<span class="globalDataText simpleText">{{acvtiveSession.sessionId}}</span><br/>
-            <span class="globalDataText">Ip Użytkownika:</span>&nbsp;<span class="globalDataText simpleText">{{acvtiveSession.userIp}}</span><br/>
-            <span class="globalDataText">Data Wizyty:</span>&nbsp;<span class="globalDataText simpleText">{{acvtiveSession.visitDate}}</span><br/>
-            <span class="globalDataText">Urządzenie:</span>&nbsp;<span class="globalDataText simpleText">{{acvtiveSession.device}}</span><br/>
-            <span class="globalDataText">Przeglądarka:</span>&nbsp;<span class="globalDataText simpleText">{{acvtiveSession.browser}}</span><br/>
-            <span class="globalDataText">Lokacja:</span>&nbsp;<span class="globalDataText simpleText">{{acvtiveSession.location}}</span><br/>
-            <span class="globalDataText">Polecenie:</span>&nbsp;<span class="globalDataText simpleText">{{acvtiveSession.reffer}}</span><br/>
+            <span class="globalDataText">{{resourceString[10]}}:</span>&nbsp;<span class="globalDataText simpleText">{{acvtiveSession.userId}}</span><br/>
+            <span class="globalDataText">{{resourceString[11]}}:</span>&nbsp;<span class="globalDataText simpleText">{{acvtiveSession.sessionId}}</span><br/>
+            <span class="globalDataText">{{resourceString[2]}}:</span>&nbsp;<span class="globalDataText simpleText">{{acvtiveSession.userIp}}</span><br/>
+            <span class="globalDataText">{{resourceString[12]}}:</span>&nbsp;<span class="globalDataText simpleText">{{acvtiveSession.visitDate}}</span><br/>
+            <span class="globalDataText">{{resourceString[13]}}:</span>&nbsp;<span class="globalDataText simpleText">{{this.resourceString[27]}}</span><br/>
+            <span class="globalDataText">{{resourceString[14]}}:</span>&nbsp;<span class="globalDataText simpleText">{{acvtiveSession.browser}}</span><br/>
+            <span class="globalDataText">{{resourceString[15]}}:</span>&nbsp;<span class="globalDataText simpleText">{{this.resourceString[28]}}</span><br/>
+            <span class="globalDataText">{{resourceString[16]}}:</span>&nbsp;<span class="globalDataText simpleText">{{acvtiveSession.reffer}}</span><br/>
             <div><mat-checkbox
                 [checked]="acvtiveSession.didLogged"
                 [disabled]="true"
                 labelPosition="after"
-                ></mat-checkbox> Czy Zalogowany</div>
+                ></mat-checkbox> {{resourceString[17]}}</div>
                 <div><mat-checkbox
                     [checked]="acvtiveSession.didContacted"
                     [disabled]="true"
                     labelPosition="after"
-                    > Czy się Kontaktował</mat-checkbox></div>
+                    > {{resourceString[18]}}</mat-checkbox></div>
 
-            <!-- przedmioty w koszyku-->
             <div class="cartItemsList">
-                <h2>Przedmioty Dodane do Koszyka</h2>
-                <div class="cartItem" *ngFor='let item of acvtiveSession.cartItems'>
-                    <span class="globalDataText">{{item.itemName}}</span><br/>
-                    <span class="globalDataText simpleText">{{item.itemAction}}</span>
+                <h2>{{resourceString[19]}}</h2>
+                <div class="cartItem" *ngFor="let item of acvtiveSession.cartItems; index as i">
+                    <span class="globalDataText">{{resourceString[cartItemsNameIndex + i]}}</span><br/>
+                    <span class="globalDataText simpleText">{{resourceString[cartItemsActionIndex + i]}}</span>
                 </div>
             </div>
         </div>
@@ -56,7 +56,7 @@
         <mat-selection-list #sessions>
             <mat-list-option
             (click)='averageClicked()'>
-                <div class="avDataDiv">Średnie Dane</div>
+                <div class="avDataDiv">{{resourceString[22]}}</div>
             </mat-list-option>
             <mat-list-option *ngFor="let session of sessionsList"
             (click)='sessionClicked(session)'>

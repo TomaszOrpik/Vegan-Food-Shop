@@ -16,3 +16,49 @@
    left: 30%;
    position: fixed;
 }
+
+#icon { 
+    z-index: 2200;
+    cursor: pointer;
+    position: sticky;
+    top: 90vh;
+}
+
+
+.fa-arrow-down{
+    color: #f39c12;
+    font-size: 80px;
+    transform: rotate(90deg);
+    transition: transform 0.5s linear;
+  }
+.fa-arrow-down:hover {
+    color: green;
+}
+  
+  .fa-arrow-down.open{
+    transform: rotate(270deg);
+    transition: transform 0.5s linear;
+  }
+
+  .slideOut {
+      animation: slideOut 0.5s 1 forwards ease-in;
+  }
+  .slideIn {
+    animation: slideIn 0.5s 1 forwards ease-in;
+}
+
+@keyframes slideOut {
+    from {
+        left: 0px;
+    } to {
+        left: -100px;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        left: -100px;
+    } to {
+        left: 0px;
+    }
+}

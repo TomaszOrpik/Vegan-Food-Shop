@@ -1,16 +1,16 @@
 <div class="card">
   <div class="card-body">
-    <h4 class="card-title">Zamówienie</h4>
-    <p class="card-text">Masz {{ cart.totalItemsCount() }} produktów w koszyku.</p>
+    <h4 class="card-title">{{resourceString[0]}}</h4>
+    <p class="card-text">{{ resourceString[1] + ' ' + cart.totalItemsCount() + ' ' + resourceString[2] }}</p>
     <ul class="list-group list-group-flush">
-      <li *ngFor="let item of cart.items" class="list-group-item">
-        {{ item.quantity }} x {{ item.title }}
+      <li *ngFor="let item of cart.items; index as i" class="list-group-item">
+        {{ item.quantity }} x {{ resourceString[4+i] }}
         <div class="float-right">
           {{ item.totalPrice | currency:'PLN ':'code' }}
         </div>
       </li>
       <li class="list-group-item font-weight-bold">
-        Łącznie: 
+        {{resourceString[3]}}: 
         <div class="float-right">
           {{ cart.totalPrice() | currency:'PLN ':'code' }}
         </div>

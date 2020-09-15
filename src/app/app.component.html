@@ -5,7 +5,8 @@
 </ng-template>
 <ng-template #page>
     <div>
-        <dashboard id="dashboard" *ngIf='showDashboard'></dashboard>
+        <dashboard id="dashboard" class="{{dashboardClasses.join(' ')}}" *ngIf='showDashboard'></dashboard>
+        <i id="icon" class="{{arrowClasses.join(' ')}}" (click)="arrowClick()" *ngIf='showDashboard'></i>
         <div>
             <bs-navbar></bs-navbar>
             <router-outlet></router-outlet>

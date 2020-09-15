@@ -1,10 +1,13 @@
 import { ShoppingCart } from '../../models/shopping-cart';
 import { ShoppingCartService } from '../../services/shopping-cart.service';
 import { Product } from '../../models/product';
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { TrackUserService } from '../../services/track-user.service';
 import { PageActivityService } from '../../services/page-activity.service';
+import { stringify } from 'querystring';
+import { LangService } from '../../services/lang.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   // tslint:disable-next-line: component-selector
@@ -12,16 +15,45 @@ import { PageActivityService } from '../../services/page-activity.service';
   templateUrl: './product-card.component.html',
   styleUrls: ['./product-card.component.css']
 })
-export class ProductCardComponent {
+export class ProductCardComponent implements OnInit, OnDestroy {
 
   @Input() product: Product;
   @Input() showActions = true;
   @Input() cart: ShoppingCart;
 
+  resourceString = ['Dodaj do koszyka', ''];
+  subContainer: Subscription;
+  subListContainer: Subscription;
+
   constructor(private router: Router,
               private cartService: ShoppingCartService,
               private trackUser: TrackUserService,
-              private pageActivity: PageActivityService) { }
+              private pageActivity: PageActivityService,
+              private lang: LangService) { }
+  ngOnInit() {
+    setTimeout(() => {
+      this.resourceString[1] = this.product.title;
+      this.subContainer = this.lang.getLang().valueChanges().subscribe((lang: { LANG: string }) => {
+          this.subListContainer = this.lang.getLangList().valueChanges().subscribe((list: {eng: string, pl: string}[]) => {
+            if (lang.LANG === 'PL')
+              list.forEach((el: {eng: string, pl: string}) => {
+                for (let i = 0; i < this.resourceString.length; i++)
+                  if (this.resourceString[i] === el.eng) this.resourceString[i] = el.pl;
+              });
+            if (lang.LANG === 'ENG')
+              list.forEach((el: {eng: string, pl: string}) => {
+                for (let i = 0; i < this.resourceString.length; i++)
+                  if (this.resourceString[i] === el.pl) this.resourceString[i] = el.eng;
+              });
+          });
+        });
+    }, 100);
+  }
+
+  ngOnDestroy() {
+    this.subContainer.unsubscribe();
+    this.subListContainer.unsubscribe();
+  }
 
   addToCart(elementId: string) {
     this.pageActivity.ElClicked(elementId);

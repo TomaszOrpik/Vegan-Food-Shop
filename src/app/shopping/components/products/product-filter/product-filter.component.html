@@ -6,9 +6,9 @@
         [class.active]="!category"
         routerLink="/sklep"
         (click)="categoryClicked('all-Category')"
-        >Wszystkie Kategorie</a>
+        >{{resourceString[0]}}</a>
       <a 
-        *ngFor="let c of categories$"
+        *ngFor="let c of categories$; index as i"
         id="{{ c + '-Category' }}"
         (click)="categoryClicked(c+'-Category')"
         routerLink="/sklep"
@@ -16,7 +16,7 @@
         class="list-group-item list-group-item-action"
         [class.active]="category === c"
         >
-        {{ c }}
+        {{ resourceString[i+1] }}
       </a>
     </div>
 </div>

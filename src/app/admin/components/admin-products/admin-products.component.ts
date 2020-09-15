@@ -1,13 +1,10 @@
 import { Product } from '../../../shared/models/product';
-import { Subscription } from 'rxjs/Subscription';
 import { ProductService } from '../../../shared/services/product.service';
-import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
-import { Observable } from 'rxjs/Observable';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AngularFireList } from 'angularfire2/database';
 import { Router } from '@angular/router';
-import * as firebase from 'firebase';
+import { Subscription } from 'rxjs';
+import { LangService } from 'src/app/shared/services/lang.service';
 // import { DataTableResource } from 'angular-4-data-table';
 
 @Component({
@@ -20,12 +17,17 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
   products: Product[] = [];
   getAll: AngularFireList<unknown>;
 
+  subContainer: Subscription;
+  subListContainer: Subscription;
+  resourceString = ['Nowy Produkt', 'Przywróć Domyślne', 'Nazwa', 'Opis', 'Cena', 'Akcje', 'Edytuj', 'Usuń'];
 
-  constructor(private productService: ProductService, private router: Router) {
+
+  constructor(private productService: ProductService, private router: Router, private lang: LangService) {
     this.getAll = this.productService.getAll();
   }
 
   ngOnInit() {
+    this.lang.getTranslations(this.resourceString);
     this.getAll.valueChanges()
     .subscribe((products: Product[]) => {
       this.products = products;
@@ -36,7 +38,9 @@ export class AdminProductsComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
+    this.lang.unSubAll();
   }
+
 
   DeleteProduct(product: Product) {
     this.productService.delete(product.id);

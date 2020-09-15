@@ -11,6 +11,7 @@ import { ShoppingCartService } from 'src/app/shared/services/shopping-cart.servi
 import { TrackUserService } from 'src/app/shared/services/track-user.service';
 import { ShoppingCartItem } from 'src/app/shared/models/shopping-cart-item';
 import { PageActivityService } from 'src/app/shared/services/page-activity.service';
+import { LangService } from 'src/app/shared/services/lang.service';
 
 @Component({
   // tslint:disable-next-line: component-selector
@@ -22,6 +23,13 @@ export class ShippingFormComponent implements OnInit, OnDestroy {
   @Input() cart: ShoppingCart;
   userSubscription: Subscription;
   userId: string;
+
+  subContainer: Subscription;
+  subListContainer: Subscription;
+  resourceString = ['Imię', 'Imię wymagane!', 'Nazwisko', 'Nazwisko wymagane!',
+                    'Ulica', 'Np. Białostocka 2', 'Ulica wymagana!', 'Kod Pocztowy', 'Np. 94105',
+                    'Kod pocztowy wymagany!!', 'Miejscowość', 'Np. Kraków', 'Miejscowość wymagana!!',
+                    'Województwo', 'Np. Małopolska', 'Województwo wymagane!!', 'Potwierdź'];
 
   count = 0;
 
@@ -45,10 +53,12 @@ export class ShippingFormComponent implements OnInit, OnDestroy {
     private cartService: ShoppingCartService,
     private orderService: OrderService,
     private trackUser: TrackUserService,
-    private pageActivity: PageActivityService) {
+    private pageActivity: PageActivityService,
+    private lang: LangService) {
   }
 
   ngOnInit() {
+    this.lang.getTranslations(this.resourceString);
     this.userSubscription = this.authService.user$.subscribe(user => this.userId = user.uid);
     setInterval(() => this.count = this.increaseCount(this.count), 1000);
   }
@@ -59,6 +69,7 @@ export class ShippingFormComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.userSubscription.unsubscribe();
+    this.lang.unSubAll();
     const sessionId = localStorage.getItem('sessionId');
     if (sessionId !== 'Admin')
       this.trackUser.postPage(sessionId, 'Podsumowanie Zamówienia', this.count);

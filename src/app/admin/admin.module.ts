@@ -12,6 +12,7 @@ import { DashnoardComponent } from './components/dashnoard/dashnoard.component';
 import { AdminMessagesComponent } from './components/admin-messages/admin-messages.component';
 import { PageActivityComponent } from './components/page-activity/page-activity.component';
 import { UsersListComponent } from './components/users-list/users-list.component';
+import { AdminTranslationsComponent } from './components/admin-translations/admin-translations.component';
 
 
 @NgModule({
@@ -73,6 +74,14 @@ import { UsersListComponent } from './components/users-list/users-list.component
           AuthGuard,
           // AdminAuthGuard
         ]
+      },
+      {
+        path: 'admin/tlumaczenie',
+        component: AdminTranslationsComponent,
+        canActivate: [
+          AuthGuard,
+          // AdminAuthGuard
+        ]
       }
     ])
   ],
@@ -84,6 +93,7 @@ import { UsersListComponent } from './components/users-list/users-list.component
     AdminMessagesComponent,
     PageActivityComponent,
     UsersListComponent,
+    AdminTranslationsComponent,
   ],
   exports: [
     DashnoardComponent

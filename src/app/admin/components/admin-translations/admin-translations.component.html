@@ -1,0 +1,46 @@
+<div class="container defaultHeight">
+    <div class="newTranslationForm">
+        <table class="half-width left" cellspacing="0"><tr>
+            <td><mat-form-field style="width: 500px;">
+              <mat-label>{{resourceString[0]}}</mat-label>
+              <input matInput [formControl]="newEnglish" rows="2" [(ngModel)]="formNewEnglish" placeholder="{{resourceString[1]}}" required/>
+              <mat-error *ngIf="newEnglish.hasError('required')">{{resourceString[2]}}</mat-error>
+            </mat-form-field></td>
+          </tr>
+          </table>
+          <table class="half-width left" cellspacing="0"><tr>
+            <td><mat-form-field style="width: 500px;">
+              <mat-label>{{resourceString[3]}}</mat-label>
+              <input matInput [formControl]="newPolish" rows="2" [(ngModel)]="formNewPolish" placeholder="{{resourceString[4]}}" required/>
+              <mat-error *ngIf="newPolish.hasError('required')">{{resourceString[2]}}</mat-error>
+            </mat-form-field></td>
+          </tr>
+          </table>
+          <button class="btn right" style="margin-right: 20px;" (click)="saveNew()">{{resourceString[5]}}</button>
+    </div>
+    <div class="newTranslationForm">
+        <table class="half-width left" cellspacing="0"><tr>
+            <td><mat-form-field style="width: 500px;">
+              <mat-label>{{resourceString[0]}}</mat-label>
+              <input matInput [formControl]="editEnglish" rows="2" [(ngModel)]="formEditEnglish" placeholder="{{resourceString[1]}}" required/>
+              <mat-error *ngIf="editEnglish.hasError('required')">{{resourceString[2]}}</mat-error>
+            </mat-form-field></td>
+          </tr>
+          </table>
+          <table class="half-width left" cellspacing="0"><tr>
+            <td><mat-form-field style="width: 500px;">
+              <mat-label>{{resourceString[3]}}</mat-label>
+              <input matInput [formControl]="editPolish" rows="2" [(ngModel)]="formEditPolish" placeholder="{{resourceString[4]}}" required/>
+              <mat-error *ngIf="editPolish.hasError('required')">{{resourceString[2]}}</mat-error>
+            </mat-form-field></td>
+          </tr>
+          </table>
+          <button class="btn right" style="margin-right: 20px;" (click)="update()">{{resourceString[6]}}</button>
+    </div>
+    <div class="listOfTranslations">
+        <mat-selection-list>
+            <mat-list-option *ngFor='let translationItem of translationsList' class="checkbox"
+            (click)="readyForEdit(translationItem)">English: {{shortSentence(translationItem.translation.eng)}} / Polish: {{shortSentence(translationItem.translation.pl)}}</mat-list-option>
+        </mat-selection-list>
+    </div>
+</div>

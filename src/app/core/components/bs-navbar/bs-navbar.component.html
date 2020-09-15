@@ -18,27 +18,32 @@
         <ng-template #loggedUser>
           <li>
             <h2 class="textWelcome" (click)="logout()">
-              {{ 'Witaj! ' + userName }}
+              {{ resourceString[0] + ' ' + userName }}
             </h2>
           </li>
         </ng-template>
         <li class="nav-item">
           <a class="nav-link" routerLink="/sklep" id="shopLink" (click)="navbarElClicked('shopLink')">
-            <span><b>SKLEP</b></span>
+            <span><b>{{resourceString[1]}}</b></span>
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="/sklep" [queryParams]="{ kontakt: true }" id="contactLink" (click)="navbarElClicked('contactLink')">
-            <span><b>KONTAKT</b></span>
+            <span><b>{{resourceString[2]}}</b></span>
           </a>
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="/koszyk" id="cartLink" (click)="navbarElClicked('cartLink')">
-            <span><b>KOSZYK</b></span>
+            <span><b>{{resourceString[3]}}</b></span>
             <span class="badge badge-warning badge-pill">( <span id="cartCounter">0</span> )</span>
           </a>
         </li>
         <ng-template *ngIf="isLogged then loggedUser else anonymousUser" class="nav-item"></ng-template>
+        <li class="nav-item">
+          <div class="sliderParent">
+            <span class="customSlide">PL</span><mat-slide-toggle [(ngModel)]='langChecked' [checked]='langChecked' (change)='onChange()'>ENG</mat-slide-toggle>
+          </div>
+        </li>
       </ul>
     </div>
   </nav>

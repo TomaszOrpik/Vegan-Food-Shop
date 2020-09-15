@@ -5,11 +5,11 @@
 <header class="masthead text-center text-white">
     <div class="masthead-content">
       <div class="container">
-        <h1 class="masthead-heading mb-0">Jedz zdrowo i smacznie</h1>
-        <h2 class="masthead-subheading mb-0">Zacznij zakupy już teraz!</h2>
+        <h1 class="masthead-heading mb-0">{{resourceString[0]}}</h1>
+        <h2 class="masthead-subheading mb-0">{{resourceString[1]}}</h2>
         <a routerLink="/sklep" class="mt-5" id="mainStartButton" (click)="ElClicked('mainStartButton')">
             <div class="customButton main">
-                <button>ROZPOCZNIJ</button>
+                <button>{{resourceString[2]}}</button>
             </div>
         </a>
       </div>
@@ -27,8 +27,8 @@
           </div>
           <div class="col-lg-6 order-lg-1">
             <div class="p-5">
-              <h2 class="display-4">Zdrowe warzywa!</h2>
-              <p>Codziennie dbamy o to, by dostarczyć wam dzienną porcję świeżych warzyw, by każdy nasz klient mógł rozpocząć dzień zdrowo i ze smakiem.</p>
+              <h2 class="display-4">{{resourceString[3]}}</h2>
+              <p>{{resourceString[4]}}</p>
             </div>
           </div>
         </div>
@@ -47,8 +47,8 @@
               </div>
               <div class="col-lg-6">
                 <div class="p-5">
-                  <h2 class="display-4">Świeże pieczywo!</h2>
-                  <p>Codziennie rano dostajemy partię wypieczonych ręcznie pieczyw, by każdy klient mógł być pewien, że nasze produkty są zawsze najwyższej jakości.</p>
+                  <h2 class="display-4">{{resourceString[5]}}</h2>
+                  <p>{{resourceString[6]}}</p>
                 </div>
               </div>
             </div>
@@ -67,8 +67,8 @@
               </div>
               <div class="col-lg-6 order-lg-1">
                 <div class="p-5">
-                  <h2 class="display-4">Produkty mleczne!</h2>
-                  <p>Dbając o nasz asortyment, mamy również w ofercie naturalne produkty mleczne, czyli ręcznie wyrabiane sery, śmietany i oczywiście pyszne mleko bez dodatków chemicznych.</p>
+                  <h2 class="display-4">{{resourceString[7]}}</h2>
+                  <p>{{resourceString[8]}}</p>
                 </div>
               </div>
             </div>
@@ -79,10 +79,10 @@
   <section>
     <div class="bottomShop">
       <div class="container text-center customBottom">
-          <h2 class="mb-0 bottomHeader">Zacznij zakupy już teraz!</h2>
+          <h2 class="mb-0 bottomHeader">{{resourceString[9]}}</h2>
           <a routerLink="/sklep" (click)="scrollToTop()" class="bottomBtn" id="secondStartButton" (click)="ElClicked('secondStartButton')">
               <div class="customButton">
-                  <button>WEJDŹ</button>
+                  <button>{{resourceString[10]}}</button>
               </div>
           </a>
       </div>

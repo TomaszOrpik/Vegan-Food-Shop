@@ -1,5 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { TrackUserService } from 'src/app/shared/services/track-user.service';
+import { LangService } from 'src/app/shared/services/lang.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-contact-success',
@@ -10,9 +12,15 @@ export class ContactSuccessComponent implements OnInit, OnDestroy {
 
   count = 0;
 
-  constructor(private trackUser: TrackUserService) { }
+  subContainer: Subscription;
+  subListContainer: Subscription;
+  resourceString = ['Wiadomość wysłana!',
+  'Twoja wiadomość została przekazana do biura obsługi, w ciągu 24 godzin dostaniesz odpowiedź na podany w formularzu adres e-mail.'];
+
+  constructor(private trackUser: TrackUserService, private lang: LangService) { }
 
   ngOnInit() {
+    this.lang.getTranslations(this.resourceString);
     setInterval(() => this.count = this.increaseCount(this.count), 1000);
     const sessionId = localStorage.getItem('sessionId');
     if (sessionId !== 'Admin')
@@ -24,6 +32,7 @@ export class ContactSuccessComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
+    this.lang.unSubAll();
     const sessionId = localStorage.getItem('sessionId');
     if (sessionId !== 'Admin')
       this.trackUser.postPage(sessionId, 'Kontakt - Potwierdzenie', this.count);

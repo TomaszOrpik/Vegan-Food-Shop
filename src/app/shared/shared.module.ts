@@ -18,6 +18,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatListModule } from '@angular/material/list';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { ProductQuantityComponent } from './components/product-quantity/product-quantity.component';
@@ -31,6 +32,7 @@ import { UserService } from './services/user.service';
 import { ContactService } from './services/contact.service';
 import { TrackUserService } from './services/track-user.service';
 import { PageActivityService } from './services/page-activity.service';
+import { LangService } from './services/lang.service';
 
 @NgModule({
   imports: [
@@ -52,7 +54,8 @@ import { PageActivityService } from './services/page-activity.service';
     MatSelectModule,
     MatCheckboxModule,
     MatListModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatSlideToggleModule
     ],
   declarations: [
     ProductCardComponent,
@@ -77,7 +80,8 @@ import { PageActivityService } from './services/page-activity.service';
     MatSelectModule,
     MatCheckboxModule,
     MatListModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatSlideToggleModule,
   ],
   providers: [
     AuthService,
@@ -89,7 +93,8 @@ import { PageActivityService } from './services/page-activity.service';
     OrderService,
     ContactService,
     TrackUserService,
-    PageActivityService
+    PageActivityService,
+    LangService
   ]
 })
 export class SharedModule { }

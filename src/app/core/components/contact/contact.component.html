@@ -1,26 +1,26 @@
 
 <div class="container">
-  <h1>Kontakt</h1>
+  <h1>{{resourceString[0]}}</h1>
   <form class="form">
     <table class="full-width" cellspacing="0"><tr>
       <td><mat-form-field class="full-width">
-        <mat-label>E-mail</mat-label>
-        <input matInput [formControl]="mail" [(ngModel)]="formMail" type="mail" placeholder="name@example.com" id="mailInput" (keydown)="collectClick('mailInput')" required>
-        <mat-error *ngIf="mail.hasError('required')">Adres e-mail wymagany!</mat-error>
+        <mat-label>{{resourceString[1]}}</mat-label>
+        <input matInput [formControl]="mail" [(ngModel)]="formMail" type="mail" placeholder={{resourceString[8]}} id="mailInput" (keydown)="collectClick('mailInput')" required>
+        <mat-error *ngIf="mail.hasError('required')">{{resourceString[2]}}</mat-error>
       </mat-form-field></td>
     </tr></table>
     <p>
       <mat-form-field class="full-width">
-        <mat-label>Temat</mat-label>
-        <input matInput [formControl]="subject" [(ngModel)]="formSubject" placeholder="Pytanie" id="subjectInput" (keydown)="collectClick('subjectInput')" required>
-        <mat-error *ngIf="subject.hasError('required')">Temat wymagany!</mat-error>
+        <mat-label>{{resourceString[3]}}</mat-label>
+        <input matInput [formControl]="subject" [(ngModel)]="formSubject" placeholder={{resourceString[9]}} id="subjectInput" (keydown)="collectClick('subjectInput')" required>
+        <mat-error *ngIf="subject.hasError('required')">{{resourceString[4]}}</mat-error>
       </mat-form-field>
     </p>
     <table class="full-width" cellspacing="0"><tr>
       <td><mat-form-field class="full-width">
-        <mat-label>Treść</mat-label>
-        <textarea matInput [formControl]="body" [(ngModel)]="formBody" placeholder="Zwracam się z pytaniem..." id="bodyInput" (keydown)="collectClick('bodyInput')" required></textarea>
-        <mat-error *ngIf="body.hasError('required')">Treść maila wymagana!!</mat-error>
+        <mat-label>{{resourceString[5]}}</mat-label>
+        <textarea matInput [formControl]="body" [(ngModel)]="formBody" placeholder={{resourceString[10]}} id="bodyInput" (keydown)="collectClick('bodyInput')" required></textarea>
+        <mat-error *ngIf="body.hasError('required')">{{resourceString[6]}}</mat-error>
       </mat-form-field></td>
     </tr>
     </table>
@@ -28,8 +28,7 @@
     mat-button color="primary"
     id="sendMessageButton"
     (click)="sendMessage('sendMessageButton')"
-    >
-      Wyślij
+    >{{resourceString[7]}}
     </button>
   </form>
 </div>

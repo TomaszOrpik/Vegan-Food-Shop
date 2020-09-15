@@ -5,14 +5,14 @@
         <div class="row">
         <div class="col-md-6">
           <div>
-            <img *ngIf="product.imageUrl" id="item-display" [src]="product.imageUrl" alt="{{ product.title }}"/>
+            <img *ngIf="product.imageUrl" id="item-display" [src]="product.imageUrl" alt="{{ resourceString[7] }}"/>
           </div>
         </div>
         <div class="col-md-6">
-          <div class="product-title">Nazwa: {{ product.title }}</div>
+          <div class="product-title">{{resourceString[0]}}: {{ resourceString[7] }}</div>
         <hr>
-        <div class="product-price">Cena: {{ (product.price | currency:'PLN ':'code') }}</div>
-        <div class="product-stock">Stan: <span class="text-green">W Magazynie</span></div>
+        <div class="product-price">{{resourceString[1]}}: {{ (product.price | currency:'PLN ':'code') }}</div>
+        <div class="product-stock">{{resourceString[2]}}: <span class="text-green">{{resourceString[3]}}</span></div>
         <hr>
         <div class="btn-group cart">
           <button 
@@ -20,14 +20,14 @@
             type="button" 
             (click)="addToCart(product.title + '-detailsPageAddtoCartButton')" 
             class="btn btn-success">
-            Dodaj do koszyka
+            {{resourceString[4]}}
           </button>
           <button 
             id="{{ product.title + '-detailsPageRemovefromCartButton' }}"
             type="button" 
             (click)="removeFromCart(product.title + '-detailsPageRemovefromCartButton')" 
             class="btn btn-danger margin-left">
-            Usuń z koszyka
+            {{resourceString[5]}}
           </button>
         </div>
     </div>
@@ -35,12 +35,12 @@
   <div class="row">
     <ul id="myTab" class="nav nav-tabs nav_tabs">
           
-      <li class="active"><div data-toggle="tab">OPIS</div></li>
+      <li class="active"><div data-toggle="tab">{{resourceString[6]}}</div></li>
       
     </ul>
   <div id="myTabContent" class="tab-content">
         <div class="product-info">
-         <span>{{ product.description }}</span>               
+         <span>{{ resourceString[8] }}</span>
       </div>
   </div>
   </div>	

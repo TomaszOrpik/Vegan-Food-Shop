@@ -5,7 +5,7 @@ mat-icon {
 }
 
 .iconMail>.nav-link, .iconBuyed>.nav-link, .iconNewOrder>.nav-link,
-.global>.nav-link, .users>.nav-link, .sessions>.nav-link {
+.global>.nav-link, .users>.nav-link, .iconTranslation>.nav-link {
     color: white;
     padding: 0;
 }

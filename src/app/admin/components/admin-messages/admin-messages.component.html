@@ -1,13 +1,13 @@
 
 <div class="container defaultHeight" style="padding-top: 20px;">
-    <h1>Wiadomości</h1>
+    <h1>{{resourceString[0]}}</h1>
   <table class="table">
     <thead>
       <tr>
-        <th>Data</th>
-        <th>E-mail</th>
-        <th>Temat</th>
-        <th>Opis</th>
+        <th>{{resourceString[1]}}</th>
+        <th>{{resourceString[2]}}</th>
+        <th>{{resourceString[3]}}</th>
+        <th>{{resourceString[4]}}</th>
         <th></th>
       </tr>
     </thead> 
@@ -22,7 +22,7 @@
                 <span>{{ message.body }}</span>
             </div>
         </td>
-        <td ><a [href]="'mailto:' + message.mail" class="btn button" style="color: white;">Wyślij Wiadomość</a></td>
+        <td ><a [href]="'mailto:' + message.mail" class="btn button" style="color: white;">{{resourceString[5]}}</a></td>
       </tr>
     </tbody> 
   </table>

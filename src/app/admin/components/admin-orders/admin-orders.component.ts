@@ -1,27 +1,41 @@
 import { Order } from '../../../shared/models/order';
 import { OrderService } from '../../../shared/services/order.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
+import { Subscription } from 'rxjs';
+import { LangService } from 'src/app/shared/services/lang.service';
 
 @Component({
   selector: 'app-admin-orders',
   templateUrl: './admin-orders.component.html',
   styleUrls: ['./admin-orders.component.css']
 })
-export class AdminOrdersComponent {
+export class AdminOrdersComponent implements OnInit, OnDestroy {
   orders$: Observable<Order[]>;
 
-  constructor(private orderService: OrderService) {
+  subContainer: Subscription;
+  subListContainer: Subscription;
+  resourceString = ['Zamówienia', 'Klient', 'Data', 'Przedmioty', 'Ilość', 'Cena', 'Szczegóły', 'Nazwisko', 'Adres'];
+
+  constructor(private orderService: OrderService, private lang: LangService) {
     this.orders$ = orderService.getOrders().valueChanges() as Observable<Order[]>;
+  }
+
+  ngOnInit() {
+    this.lang.getTranslations(this.resourceString);
+  }
+
+  ngOnDestroy() {
+    this.lang.unSubAll();
   }
 
   ProductClick(order: Order) {
     const newLine = '\r\n';
-    let msg = 'Szczegóły:';
+    let msg = this.resourceString[6] + ':';
     msg += newLine;
-    msg += `Nazwisko: ${order.shipping.name} ${order.shipping.surname}`;
+    msg += `${this.resourceString[7]}: ${order.shipping.name} ${order.shipping.surname}`;
     msg += newLine;
-    msg += `Adres: ${order.shipping.street}`;
+    msg += `${this.resourceString[8]}: ${order.shipping.street}`;
     msg += newLine;
     msg += `${order.shipping.postcode} ${order.shipping.city} ${order.shipping.region}`;
     order.items.forEach(item => {

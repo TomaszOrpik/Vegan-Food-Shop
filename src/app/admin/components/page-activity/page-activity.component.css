@@ -1,6 +1,9 @@
 .simpleText {
     color: black !important;
 }
+.exportBtn {
+    margin: 20px;
+}
 .avDataDiv {
     font-weight: bolder !important;
     color: green;
