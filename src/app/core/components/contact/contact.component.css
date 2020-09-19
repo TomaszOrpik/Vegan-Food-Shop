@@ -17,3 +17,10 @@ h1 {
     float: right;
     border: 1px solid green;
 }
+
+@media screen and (max-width: 770px) {
+    .confirmButton {
+        position: fixed;
+        right: 50px !important;
+    }
+  }

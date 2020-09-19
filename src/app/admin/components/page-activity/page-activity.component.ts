@@ -71,12 +71,17 @@ export class PageActivityComponent implements OnInit, OnDestroy {
       });
     }
   }
-
+  //wywala bo robię push, a nie odświeżam wcześniej resource string - dodać resourceString = ??? i będzie dobrze
   averageClicked() {
     this.isAverage = true;
   }
 
   sessionClicked(session: Session) {
+    this.resourceString = ['Eksportuj średnie dane do pliku EXCEL', 'Eksportuj wszystko do pliku CSV', 'Ip Użytkownika', 'Najpopularniejsze Urządzenie',
+                    'Najpopularniejsza Przeglądarka', 'Najpopularniejsza Lokacja', 'Najpopularniejsze Polecenie', 'Średni Czas na Stronie', 'Średnia Operacja na Koszyku',
+                    'Średnio Ilość Kupionych Przedmiotów', 'Id Użytkownika', 'Id Sesji', 'Data Wizyty', 'Urządzenie', 'Przeglądarka', 'Lokacja', 'Polecenie', 'Czy Zalogowany',
+                    'Czy się Kontaktował', 'Przedmioty Dodane do Koszyka', 'Czas na Stronach', 'Kupione Przedmioty', 'Średnie Dane', 'Przeważnie Zalogowany', '', '', '',
+                    '', ''];
     this.isAverage = false;
     this.acvtiveSession = session;
     this.resourceString[27] = this.acvtiveSession.device;
@@ -95,21 +100,36 @@ export class PageActivityComponent implements OnInit, OnDestroy {
       this.resourceString.push(cartItem.itemAction);
     });
 
-    this.cartItemsNameIndex = 29 + session.pages.length + session.buyedItems.length;
-    this.cartItemsActionIndex = 29 + session.pages.length + session.buyedItems.length + session.cartItems.length;
-
+    this.cartItemsNameIndex = 31 + session.pages.length + session.buyedItems.length;
+    this.cartItemsActionIndex = 32 + session.pages.length + session.buyedItems.length + session.cartItems.length;
     const dataPages: {y: number, name: string }[] = [];
-    let pagesIndex = 29;
+    // let pagesIndex = 29;
     const dataBuyed: {y: number, name: string}[] = [];
-    let buyedIndex = 29 + session.pages.length;
-    session.pages.forEach((page: Page) => {
-      dataPages.push({y: page.timeOn, name: this.resourceString[pagesIndex]});
-      pagesIndex++;
-    });
-    session.buyedItems.forEach((item: BuyedItem) => {
-      dataBuyed.push({y: item.itemQuantity, name: this.resourceString[buyedIndex]});
-      buyedIndex++;
-    });
+    // let buyedIndex = 30 + session.pages.length;
+    this.lang.getTranslations(this.resourceString);
+    let j = 0;
+    let k = 0;
+    setTimeout(() => {
+      for (let i = 29; i < this.resourceString.length - (2 * session.cartItems.length); i++)
+      if (j < (session.pages.length)) {
+        dataPages.push({y: session.pages[j].timeOn, name: this.resourceString[i]});
+        j++;
+      }
+      else
+        if (session.buyedItems[k] !== undefined) {
+          dataBuyed.push({y: session.buyedItems[k].itemQuantity, name: this.resourceString[i]});
+          k++;
+        }
+    }, 100);
+
+    // session.pages.forEach((page: Page) => {
+    //   dataPages.push({y: page.timeOn, name: this.resourceString[pagesIndex]});
+    //   pagesIndex++;
+    // });
+    // session.buyedItems.forEach((item: BuyedItem) => {
+    //   dataBuyed.push({y: item.itemQuantity, name: this.resourceString[buyedIndex]});
+    //   buyedIndex++;
+    // });
     setTimeout(() => {
       const pagesChart = new CanvasJS.Chart('pagesContainer', {
         theme: 'light2',

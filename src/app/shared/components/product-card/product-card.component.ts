@@ -51,8 +51,8 @@ export class ProductCardComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.subContainer.unsubscribe();
-    this.subListContainer.unsubscribe();
+    if (this.subContainer !== undefined) this.subContainer.unsubscribe();
+    if (this.subListContainer !== undefined) this.subListContainer.unsubscribe();
   }
 
   addToCart(elementId: string) {

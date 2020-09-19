@@ -21,3 +21,15 @@
 .tab-content {
     border-top: 1px green solid;
 }
+
+.btn-group.cart {
+    margin-top: 0 !important;
+}
+
+@media screen and (max-width: 770px) {
+    .product-info {
+        display: block;
+        margin-bottom: 50px;
+    }
+}
+

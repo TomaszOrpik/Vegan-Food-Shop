@@ -4,7 +4,7 @@
 
 #dashboard {
     z-index: 2000;
-    height: 100vh;
+    height: 200vh;
     width: 100px;
     position: fixed;
     left: 0;

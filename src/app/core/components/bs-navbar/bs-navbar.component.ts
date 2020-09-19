@@ -23,6 +23,9 @@ export class BsNavbarComponent implements OnInit, OnDestroy {
   langChecked: boolean;
   resourceString: string[] = ['Witaj!', 'SKLEP', 'KONTAKT', 'KOSZYK'];
 
+  navClasses = ['collapse', 'navbar-collapse', 'mobile', 'hidden'];
+  isNavClasses = false;
+
   constructor(private auth: AuthService,
               private shoppingCartService: ShoppingCartService,
               private pageActivity: PageActivityService,
@@ -51,6 +54,13 @@ export class BsNavbarComponent implements OnInit, OnDestroy {
   onChange() {
     if (this.langChecked) this.langService.changeLang('ENG');
     else this.langService.changeLang('PL');
+  }
+
+  showNavbar() {
+    this.navClasses.pop();
+    if (!this.isNavClasses) this.navClasses.push('visible');
+     else this.navClasses.push('hidden');
+    this.isNavClasses = !this.isNavClasses;
   }
 
   navbarElClicked(elementId: string) { this.pageActivity.ElClicked(elementId); }

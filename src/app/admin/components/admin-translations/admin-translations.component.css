@@ -18,7 +18,7 @@
 }
 .listOfTranslations {
     position: absolute;
-    top: 25vh;
+    top: 35vh;
     overflow-Y: scroll;
     height: 50vh;
 }
@@ -47,3 +47,23 @@
   ::-webkit-scrollbar-thumb:hover {
     background: darkgreen; 
   }
+
+  @media screen and (max-width: 1209px) {
+      .listOfTranslations {
+          top: 50vh;
+      }
+  }
+  @media screen and (max-width: 770px) {
+    .mat-form-field {
+        width: 90vw !important;
+    }
+    .listOfTranslations {
+        top: 60vh;
+        margin-bottom: 100px;
+    }
+  }
+  @media screen and (max-width: 450px) {
+    .listOfTranslations {
+        top: 90vh;
+    }
+}

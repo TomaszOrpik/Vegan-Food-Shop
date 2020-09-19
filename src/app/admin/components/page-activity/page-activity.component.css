@@ -82,6 +82,18 @@ app-page-activity .mat-pseudo-checkbox {
     background: darkgreen; 
   }
 
-@media only screen and (min-width: 600px) {
-    /* here to display all boxes one under another on mobile*/
+@media only screen and (max-width: 770px) {
+    .dataDiv, .chartPage {
+        width: 100vw;
+    }
+    .cartItemsList {
+        height: 50vh;
+    }
+    .chartPage {
+        top: 300px;
+    }
+    .listSessions {
+        margin-top: 100vh;
+        width: 80vw;
+    }
 }

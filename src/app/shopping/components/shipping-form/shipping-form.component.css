@@ -12,6 +12,14 @@
     border: 2px solid green;
 }
 
-app-footer {
-    position: relative;
-}
+@media screen and (max-width: 770px) {
+    .full-width {
+        width: 25vw !important;
+    }
+    .mat-form-field {
+        width: 33vw !important;
+    }
+    .form {
+        margin-bottom: 100px;
+    }
+  }

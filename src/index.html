@@ -7,6 +7,13 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <meta id="myViewport" name="viewport" content="width=device-width" />     
+  <script>
+  window.onload = function () {
+    if(window.innerWidth <= 360) {
+     var mvp = document.getElementById('myViewport');
+     mvp.setAttribute('content','width=360');}}     
+  </script>
 
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">

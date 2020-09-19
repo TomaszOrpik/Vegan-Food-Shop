@@ -1,5 +1,5 @@
 import { ShoppingCartService } from '../../../shared/services/shopping-cart.service';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
 import { ShoppingCart } from 'src/app/shared/models/shopping-cart';
 import { TrackUserService } from 'src/app/shared/services/track-user.service';
 import { Subscription } from 'rxjs';
@@ -18,6 +18,8 @@ export class CheckOutComponent implements OnInit, OnDestroy {
   subListContainer: Subscription;
   resourceString = ['Dostawa'];
 
+  notMobile = true;
+
   constructor(private cartService: ShoppingCartService,
               private trackUser: TrackUserService,
               private lang: LangService) {
@@ -29,6 +31,7 @@ export class CheckOutComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    if (window.outerWidth < 600) this.notMobile = false;
     this.lang.getTranslations(this.resourceString);
     setInterval(() => this.count = this.increaseCount(this.count), 1000);
   }
@@ -42,6 +45,12 @@ export class CheckOutComponent implements OnInit, OnDestroy {
 
   increaseCount(count): number {
     return count + 1;
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    if (window.outerWidth < 770) this.notMobile = false;
+    else this.notMobile = true;
   }
 
 }

@@ -34,3 +34,28 @@
   margin-right: 5px;
   margin-left: 5px;
 }
+
+.visible {
+  display: inline-block !important;
+  text-align: right;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* responsive navbar */
+@media screen and (max-width: 770px) {
+  .responsive {
+    display: none;
+  }
+  .mobile {
+    font-size: 3vh;
+  }
+  .textWelcome {
+    font-size: 3vh;
+  }
+  .badge {
+    font-size: 3vh !important;
+  }
+}

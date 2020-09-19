@@ -1,23 +1,27 @@
 .bg-color {
-    position: relative;
+
+    position: fixed;
+    left: 0;
     bottom: 0;
-    width: 100vw;
-    background-color: lightgray !important;
-    height: 50px;
-    line-height: 1cm;
+    width: 100%;
+    background-color: lightgray;
+    color: black;
+    text-align: center;
+    z-index: 3000;
   }
 
 .leftFooter { 
   float: left;
-  width: 75%;
+  width: 50%;
 }
 .leftFooter>h5 {
   padding-top: 10px;
 }
 .rightFooter { 
   float: right; 
-  width: 25%;
+  width: 35%;
 }
 .rightFooter>h5 {
   padding-top: 10px;
 }
+

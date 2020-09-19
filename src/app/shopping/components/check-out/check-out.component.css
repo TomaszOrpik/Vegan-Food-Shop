@@ -1,0 +1,14 @@
+
+
+
+@media screen and (max-width: 770px) {
+    .mobileCart {
+        width: 90vw;
+        margin-left: 25px;
+    }
+    .mobileForm {
+        width: 90vw;
+        margin-left: 25px;
+        margin-right: 25px;
+    }
+  }

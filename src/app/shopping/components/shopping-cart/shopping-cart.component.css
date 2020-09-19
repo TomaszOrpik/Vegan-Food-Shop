@@ -28,4 +28,8 @@ h1 {
   border-color: green !important;
 }
 
+.cartText {
+  width: 40vw;
+  overflow-x: hidden;
+}
 

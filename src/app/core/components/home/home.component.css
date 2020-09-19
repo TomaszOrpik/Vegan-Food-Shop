@@ -1,10 +1,37 @@
+@media screen and (max-width: 770px) {
+  .masthead {
+    width: 150vw !important;
+  }
+  .masthead-heading {
+    font-size: 3rem !important;
+  }
+  img.bg {
+    margin-top: 100px;
+    position: absolute !important;
+  }
+  .second {
+    top: 300vh !important;
+  }
+  .bottomShop {
+    display: none;
+  }
+  .container {
+    width: 150vw !important;
+  }
+  .customBackground {
+    overflow: visible !important;
+    margin-left: 25vw !important;
+    margin-top: 200px;
+  }
+}
+
 .view {
     z-index: -2 !important;
 }
 
 img.bg {
     /* Set rules to fill background */
-    min-height: 100%;
+    /*min-height: 100%;*/
     min-width: 1024px;
       
     /* Set up proportionate scaling */
@@ -17,6 +44,13 @@ img.bg {
     left: 0;
     z-index: inherit;
   }
+
+  @media screen and (min-width: 771px) {
+    img.bg {
+      min-height: 100%;
+    }
+  }
+
   
   @media screen and (max-width: 1024px) { /* Specific to this particular image */
     img.bg {
@@ -69,7 +103,7 @@ img.bg {
     position: relative;
     overflow: hidden;
     width: 100vw;
-    margin-left: 0 !important;
+    margin-left: 0;
     background: white;
     background-repeat: no-repeat;
     background-position: center center;

@@ -1,12 +1,22 @@
 
 <div class="container defaultHeight">
   <h2>{{resourceString[0]}}</h2>
-<div class="row">
-  <div class="col-6">
-    <shipping-form [cart]="cart"></shipping-form>
-  </div>
-  <div class="col-6">
-    <shopping-cart-summary [cart]="cart"></shopping-cart-summary>
+  <ng-template #mobile>
+    <div class="row">
+      <shopping-cart-summary class="mobileCart" [cart]="cart"></shopping-cart-summary>
+    </div>
+    <div class="row">
+      <shipping-form class="mobileForm" [cart]="cart"></shipping-form>
+    </div>
+  </ng-template>
+<div *ngIf='notMobile; else mobile'>
+  <div class="row">
+    <div class="col-6">
+      <shipping-form [cart]="cart"></shipping-form>
+    </div>
+    <div class="col-6">
+      <shopping-cart-summary [cart]="cart"></shopping-cart-summary>
+    </div>
   </div>
 </div>
 </div>

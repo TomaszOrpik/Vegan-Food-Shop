@@ -41,8 +41,8 @@
             <div class="cartItemsList">
                 <h2>{{resourceString[19]}}</h2>
                 <div class="cartItem" *ngFor="let item of acvtiveSession.cartItems; index as i">
-                    <span class="globalDataText">{{resourceString[cartItemsNameIndex + i]}}</span><br/>
-                    <span class="globalDataText simpleText">{{resourceString[cartItemsActionIndex + i]}}</span>
+                    <span class="globalDataText">{{resourceString[resourceString.length - acvtiveSession.cartItems.length - acvtiveSession.cartItems.length + i]}}</span><br/>
+                    <span class="globalDataText simpleText">{{resourceString[resourceString.length - acvtiveSession.cartItems.length + i]}}</span>
                 </div>
             </div>
         </div>
