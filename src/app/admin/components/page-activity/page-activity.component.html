@@ -1,15 +1,15 @@
 
 <div class="container defaultHeight" style="padding-top: 20px;">
-    <button class="btn exportBtn">{{resourceString[0]}}</button>
-    <button class="btn exportBtn">{{resourceString[1]}}</button>
+    <button class="btn exportBtn" (click)="exportAverageToExcel()" *ngIf="!sessionsNotLoaded">{{resourceString[0]}}</button>
+    <button class="btn exportBtn" (click)="exportAllToCsv()" *ngIf="!sessionsNotLoaded">{{resourceString[1]}}</button>
         <div class="dataDiv allData" *ngIf='isAverage; else session'>
             <span class="globalDataText" *ngIf='isUser'>{{resourceString[2]}}:</span>&nbsp;<span class="globalDataText simpleText">{{averageData.userIp}}</span><br/>
-            <span class="globalDataText">{{resourceString[3]}}:</span>&nbsp;<span class="globalDataText simpleText">{{resourceString[24]}}</span><br/>
+            <span class="globalDataText">{{resourceString[3]}}:</span>&nbsp;<span class="globalDataText simpleText">{{resourceString[25]}}</span><br/>
             <span class="globalDataText">{{resourceString[4]}}:</span>&nbsp;<span class="globalDataText simpleText">{{averageData.mostUsedBrowser}}</span><br/>
-            <span class="globalDataText">{{resourceString[5]}}:</span>&nbsp;<span class="globalDataText simpleText">{{resourceString[25]}}</span><br/>
+            <span class="globalDataText">{{resourceString[5]}}:</span>&nbsp;<span class="globalDataText simpleText">{{resourceString[26]}}</span><br/>
             <span class="globalDataText">{{resourceString[6]}}:</span>&nbsp;<span class="globalDataText simpleText">{{averageData.mostPopularReffer}}</span><br/>
             <span class="globalDataText">{{resourceString[7]}}:</span>&nbsp;<span class="globalDataText simpleText">{{averageData.averageTimeOnPages.toString()}}</span><br/>
-            <span class="globalDataText">{{resourceString[8]}}:</span>&nbsp;<span class="globalDataText simpleText">{{resourceString[26]}}</span><br/>
+            <span class="globalDataText">{{resourceString[8]}}:</span>&nbsp;<span class="globalDataText simpleText">{{resourceString[27]}}</span><br/>
             <span class="globalDataText">{{resourceString[9]}}:</span>&nbsp;<span class="globalDataText simpleText">{{averageData.avItemBuy.toString()}}</span><br/>
             <div><mat-checkbox
                 [checked]="averageData.mostlyLogged"
@@ -23,9 +23,9 @@
             <span class="globalDataText">{{resourceString[11]}}:</span>&nbsp;<span class="globalDataText simpleText">{{acvtiveSession.sessionId}}</span><br/>
             <span class="globalDataText">{{resourceString[2]}}:</span>&nbsp;<span class="globalDataText simpleText">{{acvtiveSession.userIp}}</span><br/>
             <span class="globalDataText">{{resourceString[12]}}:</span>&nbsp;<span class="globalDataText simpleText">{{acvtiveSession.visitDate}}</span><br/>
-            <span class="globalDataText">{{resourceString[13]}}:</span>&nbsp;<span class="globalDataText simpleText">{{this.resourceString[27]}}</span><br/>
+            <span class="globalDataText">{{resourceString[13]}}:</span>&nbsp;<span class="globalDataText simpleText">{{this.resourceString[28]}}</span><br/>
             <span class="globalDataText">{{resourceString[14]}}:</span>&nbsp;<span class="globalDataText simpleText">{{acvtiveSession.browser}}</span><br/>
-            <span class="globalDataText">{{resourceString[15]}}:</span>&nbsp;<span class="globalDataText simpleText">{{this.resourceString[28]}}</span><br/>
+            <span class="globalDataText">{{resourceString[15]}}:</span>&nbsp;<span class="globalDataText simpleText">{{this.resourceString[29]}}</span><br/>
             <span class="globalDataText">{{resourceString[16]}}:</span>&nbsp;<span class="globalDataText simpleText">{{acvtiveSession.reffer}}</span><br/>
             <div><mat-checkbox
                 [checked]="acvtiveSession.didLogged"

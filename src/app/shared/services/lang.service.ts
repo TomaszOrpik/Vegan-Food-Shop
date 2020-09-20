@@ -46,7 +46,7 @@ export class LangService {
   changeLang(lang: string) {
     const newLang = { LANG: lang };
     this.db.list('/Language').update(this.langKey, newLang);
-    //this.db.object('/Language').set(lang);
+    // this.db.object('/Language').set(lang);
   }
 
   getLang() {
