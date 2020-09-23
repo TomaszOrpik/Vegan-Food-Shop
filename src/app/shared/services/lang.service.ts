@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Translation } from '../models/translation';
 

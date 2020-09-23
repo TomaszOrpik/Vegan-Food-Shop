@@ -14,9 +14,7 @@ import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { ShoppingModule } from './shopping/shopping.module';
 import { HomeComponent } from './core/components/home/home.component';
-import { ContactComponent } from './core/components/contact/contact.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { AuthGuard } from './shared/services/auth-guard.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
